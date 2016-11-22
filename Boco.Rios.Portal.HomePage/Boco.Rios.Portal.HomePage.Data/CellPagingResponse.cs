@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Boco.Rios.Portal.HomePage.Entity;
 
 namespace Boco.Rios.Portal.HomePage.Data
@@ -13,6 +10,7 @@ namespace Boco.Rios.Portal.HomePage.Data
             Data = new List<Cell>();
             TotalCount = 0;
         }
+
         public IList<Cell> Data { get; set; }
         public int TotalCount { get; set; }
     }

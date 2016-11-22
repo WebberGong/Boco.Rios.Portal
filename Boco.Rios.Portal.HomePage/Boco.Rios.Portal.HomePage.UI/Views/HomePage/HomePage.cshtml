@@ -6,7 +6,7 @@
     <div style="margin: 5px"><a onclick="queryNoticeById('#= Id #')">#= Title #</a><span class="date">#= ReleaseTime #</span></div>
 </script>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         var url = managementServiceBaseUrl + 'api/json/reply/GetLatestNoticeRequest';
         var param = { TopN: 10 };
         var noticeDataSource = new kendo.data.DataSource({
@@ -19,7 +19,7 @@
                 }
             },
             schema: {
-                data: function (result) {
+                data: function(result) {
                     return result.Data;
                 }
             }
@@ -29,6 +29,7 @@
             template: kendo.template($("#noticeTemplate").html())
         });
     });
+
     function queryNoticeById(id) {
         var url = managementServiceBaseUrl + 'api/json/reply/GetNoticeByIdRequest';
         var param = { Id: id };
@@ -38,7 +39,7 @@
             async: false,
             url: url,
             data: param,
-            success: function (result) {
+            success: function(result) {
                 var window = $("<div id='noticeBrowse'>" + htmlDecode(result.Data.Content) + "</div>").kendoWindow({
                     title: "公告",
                     width: "400px",
@@ -51,236 +52,241 @@
         });
     };
 </script>
-<table id="tbMain" style="width: 100%; border: 0; border-spacing: 0; padding: 0">
-    <tr>
-        <td style="width: 240px">
-            <div id="left">
-                <div class="left_title_1">
-                    公告</div>
-                <div class="left_bg_1">
-                    <div id="noticeList">
+<table id="tbMain" style="border: 0; border-spacing: 0; padding: 0; width: 100%;">
+<tr>
+<td style="width: 240px">
+    <div id="left">
+        <div class="left_title_1">
+            公告
+        </div>
+        <div class="left_bg_1">
+            <div id="noticeList">
+            </div>
+        </div>
+        <div class="left_title_bg">
+            部省上报情况
+        </div>
+        <div class="left_bg_3">
+            <table style="border: 0; border-spacing: 0; padding: 0; width: 100%;">
+                <tr>
+                    <td style="width: 28px">
+                        <img src="~/Images/2G.png" alt=""/>
+                    </td>
+                    <td>
+                        <ul>
+                            <li class="left_bg_3_click">基础数据</li>
+                            <li>性能数据</li>
+                            <li>MR</li>
+                            <li>客服工单</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="left_bg_2">
+            <table style="border: 0; border-spacing: 0; padding: 0; width: 100%;" class="table_1">
+                <tr>
+                    <th>
+                        地市
+                    </th>
+                    <th>
+                        完整性
+                    </th>
+                    <th>
+                        合法性
+                    </th>
+                    <th>
+                        合理性
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        全省
+                    </td>
+                    <td>
+                        0.98%
+                    </td>
+                    <td>
+                        0.98%
+                    </td>
+                    <td>
+                        0.98%
+                    </td>
+                </tr>
+                <tr class="table_1_tr">
+                    <td>
+                        临汾
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        1.22%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        大同
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="left_bg_3">
+            <table style="border: 0; border-spacing: 0; padding: 0; width: 100%;">
+                <tr>
+                    <td style="width: 28px">
+                        <img src="~/Images/3G_1.png" alt=""/>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="left_title_bg">
+            系统链接<img src="~/Images/ico_=.png" alt="" style="horiz-align: right"/>
+        </div>
+        <div class="left_bg_2">
+            <table style="border: 0; border-spacing: 2px; padding: 0">
+                <tr>
+                    <td class="link_bg">
+                        链接一
+                    </td>
+                    <td class="link_bg">
+                        链接二
+                    </td>
+                </tr>
+                <tr>
+                    <td class="link_bg">
+                        链接三
+                    </td>
+                    <td class="link_bg">
+                        链接四
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</td>
+<td style="vertical-align: top">
+    <div class="main_title_1">
+        <img src="~/Images/ico_2.png" alt="" style="vertical-align: middle"/>网络与考核
+    </div>
+    <div class="main_bg_3">
+        <ul>
+            <li class="main_bg_3_click">公司考核</li>
+            <li>运行情况</li>
+            <li>MR指标</li>
+            <li>网络规况</li>
+            <li>用户、业务与容量 </li>
+        </ul>
+    </div>
+    <div id="main_r">
+        <table style="border: 0; border-spacing: 0; padding: 0; width: 100%;">
+            <tr>
+                <td rowspan="2" style="vertical-align: top" class="main_bg_white">
+                    <table style="border: 0; border-spacing: 2px; padding: 2px">
+                        <tr>
+                            <td rowspan="3" style="horiz-align: center; width: 22%;">
+                                <img src="~/Images/ico_4.jpg" alt="" width="42px" height="42px"/>
+                            </td>
+                            <td>
+                                问题小区比例
+                            </td>
+                            <td class="main_bg_1">
+                                <span class="green">45%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                移动网业务掉话率
+                            </td>
+                            <td class="main_bg_1">
+                                <span class="green">45%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                干扰小区比例
+                            </td>
+                            <td class="main_bg_1">
+                                <span class="green">45%</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="line">
                     </div>
-                </div>
-                <div class="left_title_bg">
-                    部省上报情况</div>
-                <div class="left_bg_3">
-                    <table style="width: 100%; border: 0; border-spacing: 0; padding: 0">
+                    <table style="border: 0; border-spacing: 2px; padding: 2px">
                         <tr>
-                            <td style="width: 28px">
-                                <img src="~/Images/2G.png" alt="" />
+                            <td style="horiz-align: center; width: 22%;" rowspan="3">
+                                <img src="~/Images/ico_5.jpg" alt="" width="42" height="42"/>
                             </td>
                             <td>
-                                <ul>
-                                    <li class="left_bg_3_click">基础数据</li>
-                                    <li>性能数据</li>
-                                    <li>MR</li>
-                                    <li>客服工单</li>
-                                </ul>
+                                问题小区比例
+                            </td>
+                            <td class="main_bg_1">
+                                <span class="green">45%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                移动网业务掉话率
+                            </td>
+                            <td class="main_bg_1">
+                                <span class="green">45%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                干扰小区比例
+                            </td>
+                            <td class="main_bg_1">
+                                <span class="green">45%</span>
                             </td>
                         </tr>
                     </table>
-                </div>
-                <div class="left_bg_2">
-                    <table style="width: 100%; border: 0; border-spacing: 0; padding: 0" class="table_1">
-                        <tr>
-                            <th>
-                                地市
-                            </th>
-                            <th>
-                                完整性
-                            </th>
-                            <th>
-                                合法性
-                            </th>
-                            <th>
-                                合理性
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                全省
-                            </td>
-                            <td>
-                                0.98%
-                            </td>
-                            <td>
-                                0.98%
-                            </td>
-                            <td>
-                                0.98%
-                            </td>
-                        </tr>
-                        <tr class="table_1_tr">
-                            <td>
-                                临汾
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                            <td>
-                                1.22%
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                大同
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="left_bg_3">
-                    <table style="width: 100%; border: 0; border-spacing: 0; padding: 0">
-                        <tr>
-                            <td style="width: 28px">
-                                <img src="~/Images/3G_1.png" alt="" />
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="left_title_bg">
-                    系统链接<img src="~/Images/ico_=.png" alt="" style="horiz-align: right"/></div>
-                <div class="left_bg_2">
-                    <table  style="border: 0; border-spacing: 2px; padding: 0">
-                        <tr>
-                            <td class="link_bg">
-                                链接一
-                            </td>
-                            <td class="link_bg">
-                                链接二
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="link_bg">
-                                链接三
-                            </td>
-                            <td class="link_bg">
-                                链接四
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </td>
-        <td style="vertical-align: top">
-            <div class="main_title_1">
-                <img src="~/Images/ico_2.png" alt="" style="vertical-align: middle"/>网络与考核</div>
-            <div class="main_bg_3">
-                <ul>
-                    <li class="main_bg_3_click">公司考核</li>
-                    <li>运行情况</li>
-                    <li>MR指标</li>
-                    <li>网络规况</li>
-                    <li>用户、业务与容量 </li>
-                </ul>
-            </div>
-            <div id="main_r">
-                <table style="width: 100%; border: 0; border-spacing: 0; padding: 0">
-                    <tr>
-                        <td rowspan="2" style="vertical-align: top" class="main_bg_white">
-                            <table style="border: 0; border-spacing: 2px; padding: 2px">
-                                <tr>
-                                    <td rowspan="3" style="width: 22%; horiz-align: center">
-                                        <img src="~/Images/ico_4.jpg" alt="" width="42px" height="42px" />
-                                    </td>
-                                    <td>
-                                        问题小区比例
-                                    </td>
-                                    <td class="main_bg_1">
-                                        <span class="green">45%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        移动网业务掉话率
-                                    </td>
-                                    <td class="main_bg_1">
-                                        <span class="green">45%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        干扰小区比例
-                                    </td>
-                                    <td class="main_bg_1">
-                                        <span class="green">45%</span>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="line">
-                            </div>
-                            <table style="border: 0; border-spacing: 2px; padding: 2px">
-                                <tr>
-                                    <td style="width: 22%; horiz-align: center" rowspan="3">
-                                        <img src="~/Images/ico_5.jpg" alt="" width="42" height="42" />
-                                    </td>
-                                    <td>
-                                        问题小区比例
-                                    </td>
-                                    <td class="main_bg_1">
-                                        <span class="green">45%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        移动网业务掉话率
-                                    </td>
-                                    <td class="main_bg_1">
-                                        <span class="green">45%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        干扰小区比例
-                                    </td>
-                                    <td class="main_bg_1">
-                                        <span class="green">45%</span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td style="vertical-align: top">
-                            <div class="main_bg_3">
-                                <ul>
-                                    <li class="main_bg_3_click">指标趋势</li>
-                                    <li>地市对比</li>
-                                    <li>ul</li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="horiz-align: center; vertical-align: top">
-                            <img src="~/Images/pic.png" alt="" width="645px" height="195px" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="main_title_2">
-                <img src="~/Images/ico_3.png" alt="" style="vertical-align: middle" />网优工作进展</div>
-            <div id="main_r_1">
-                <table style="width: 100%; border: 0; border-spacing: 10px; padding: 0">
-                    <tr>
-                        <td style="width: 65%; horiz-align: center; vertical-align: top">
-                            <img src="~/Images/pic.png" alt="" width="645px" height="195px" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="main_bg_3">
+                        <ul>
+                            <li class="main_bg_3_click">指标趋势</li>
+                            <li>地市对比</li>
+                            <li>ul</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="horiz-align: center; vertical-align: top">
+                    <img src="~/Images/pic.png" alt="" width="645px" height="195px"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="main_title_2">
+        <img src="~/Images/ico_3.png" alt="" style="vertical-align: middle"/>网优工作进展
+    </div>
+    <div id="main_r_1">
+        <table style="border: 0; border-spacing: 10px; padding: 0; width: 100%;">
+            <tr>
+                <td style="horiz-align: center; vertical-align: top; width: 65%;">
+                    <img src="~/Images/pic.png" alt="" width="645px" height="195px"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</td>
+</tr>
 </table>

@@ -1,18 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <!--定义一个sqlMap映射，可以有多个-->
-<sqlMap namespace="Boco.Rios.Portal.HomePage" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+<sqlMap namespace="Boco.Rios.Portal.HomePage" xmlns="http://ibatis.apache.org/mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!--定义别名-->
   <alias>
-    <typeAlias alias="Cell" type="Boco.Rios.Portal.HomePage.Entity.Cell,Boco.Rios.Portal.HomePage.Entity"/>
+    <typeAlias alias="Cell" type="Boco.Rios.Portal.HomePage.Entity.Cell,Boco.Rios.Portal.HomePage.Entity" />
   </alias>
 
   <!--定义结果映射-->
   <resultMaps>
     <resultMap id="CellResult" class="Cell">
-      <result column="INT_ID" property="IntId"/>
-      <result column="NAME" property="Name"/>
-      <result column="LAC" property="Lac"/>
-      <result column="CI" property="Ci"/>
+      <result column="INT_ID" property="IntId" />
+      <result column="NAME" property="Name" />
+      <result column="LAC" property="Lac" />
+      <result column="CI" property="Ci" />
     </resultMap>
   </resultMaps>
 
@@ -21,19 +23,19 @@
       SELECT * FROM CELL WHERE ROWNUM &lt; 1001
     </sql>
     <select id="GetCellsByCondition" resultMap="CellResult">
-      <include refid="GetCellsByCondition"/>
+      <include refid="GetCellsByCondition" />
     </select>
     <select id="GetCellsByConditionForPaging" resultMap="CellResult">
       SELECT * FROM
       (SELECT ROWNUM AS 序号, X.* FROM (
-      <include refid="GetCellsByCondition"/>
+      <include refid="GetCellsByCondition" />
       ) X
       WHERE ROWNUM &lt;= $Page$ * $PageSize$)
       WHERE 序号 >= ($Page$ - 1) * $PageSize$ + 1
     </select>
     <select id="GetCellsByConditionForCount" resultMap="CellResult">
       SELECT COUNT(*) FROM (
-      <include refid="GetCellsByCondition"/>
+      <include refid="GetCellsByCondition" />
       )
     </select>
   </statements>

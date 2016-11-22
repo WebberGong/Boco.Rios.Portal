@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -16,17 +14,18 @@ namespace UIShell.OSGi.MvcCore
             return locationFormat.Replace("~", bundleRelativePath);
         }
 
-        public static IEnumerable<string> RedirectToBundlePath(IEnumerable<string> locationFormats, string bundleRelativePath)
+        public static IEnumerable<string> RedirectToBundlePath(IEnumerable<string> locationFormats,
+            string bundleRelativePath)
         {
             return locationFormats.Select(item => RedirectToBundlePath(item, bundleRelativePath));
         }
 
         public static string MapPathReverse(string fullServerPath)
         {
-            return @"~\" + fullServerPath.Replace(HostingEnvironment.ApplicationPhysicalPath, String.Empty);
+            return @"~\" + fullServerPath.Replace(HostingEnvironment.ApplicationPhysicalPath, string.Empty);
         }
 
-        public static string GetPluginSymbolicName(this System.Web.Routing.RequestContext requestContext)
+        public static string GetPluginSymbolicName(this RequestContext requestContext)
         {
             return requestContext.HttpContext.GetPluginSymbolicName();
         }

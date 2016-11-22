@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using UIShell.OSGi.Loader;
+using System.Web.Routing;
 using System.Web.SessionState;
 using UIShell.OSGi.Collection;
+using UIShell.OSGi.Loader;
 using UIShell.OSGi.Utility;
 
 namespace UIShell.OSGi.MvcCore
 {
     public static class ControllerTypeCache
     {
-        private static ThreadSafeDictionary<string, Type> _controllerTypes = new ThreadSafeDictionary<string, Type>();
+        private static readonly ThreadSafeDictionary<string, Type> _controllerTypes =
+            new ThreadSafeDictionary<string, Type>();
 
         private static string GetKey(string plugin, string controllerName)
         {
@@ -24,6 +26,7 @@ namespace UIShell.OSGi.MvcCore
                 locker[GetKey(plugin, controllerName)] = controllerType;
             }
         }
+
         public static Type GetControllerType(string plugin, string controllerName)
         {
             using (var locker = _controllerTypes.Lock())
@@ -41,9 +44,9 @@ namespace UIShell.OSGi.MvcCore
     public class BundleRuntimeControllerFactory : IControllerFactory
     {
         //if the controller is defined in a normal assembly other than plugin, the DefaultControllerFactory should be able to resolve it.
-        IControllerFactory _defaultFactory = new DefaultControllerFactory();
+        private readonly IControllerFactory _defaultFactory = new DefaultControllerFactory();
 
-        public IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)
+        public IController CreateController(RequestContext requestContext, string controllerName)
         {
             //http://localhost:1616/Blog/Index?plugin=BlogPlugin
 
@@ -55,15 +58,16 @@ namespace UIShell.OSGi.MvcCore
                 try
                 {
                     //if the controller is defined in a normal assembly other than plugin, the DefaultControllerFactory should be able to resolve it.
-                    var controller = _defaultFactory.CreateController(requestContext, requestContext.RouteData.Values["controller"].ToString());
+                    var controller = _defaultFactory.CreateController(requestContext,
+                        requestContext.RouteData.Values["controller"].ToString());
                     if (controller != null)
                     {
                         return controller;
                     }
                 }
-                // ReSharper disable EmptyGeneralCatchClause
+                    // ReSharper disable EmptyGeneralCatchClause
                 catch
-                // ReSharper restore EmptyGeneralCatchClause
+                    // ReSharper restore EmptyGeneralCatchClause
                 {
                     //suppress any error.
                 }
@@ -87,6 +91,26 @@ namespace UIShell.OSGi.MvcCore
             return null;
         }
 
+
+        public SessionStateBehavior GetControllerSessionBehavior(RequestContext requestContext, string controllerName)
+        {
+            var controllerType = GetControllerType(requestContext.GetPluginSymbolicName(), controllerName);
+            if (controllerType == null) return SessionStateBehavior.Default;
+
+            var attribute =
+                controllerType.GetCustomAttributes(typeof (SessionStateAttribute), true)
+                    .OfType<SessionStateAttribute>()
+                    .FirstOrDefault();
+            if (attribute == null) return SessionStateBehavior.Default;
+            return attribute.Behavior;
+        }
+
+        public void ReleaseController(IController controller)
+        {
+            var disposable = controller as IDisposable;
+            if (disposable != null) disposable.Dispose();
+        }
+
         private Type GetControllerType(string pluginSymbolicName, string controllerName)
         {
             var symbolicName = pluginSymbolicName;
@@ -95,52 +119,39 @@ namespace UIShell.OSGi.MvcCore
                 var controllerType = ControllerTypeCache.GetControllerType(symbolicName, controllerName);
                 if (controllerType != null)
                 {
-                    FileLogUtility.Inform(string.Format("Loaded controller '{0}' from bundle '{1}' by using cache.", controllerName, symbolicName));
+                    FileLogUtility.Inform(string.Format("Loaded controller '{0}' from bundle '{1}' by using cache.",
+                        controllerName, symbolicName));
                     return controllerType;
                 }
 
                 var controllerTypeName = controllerName + "Controller";
                 var runtimeService = BundleRuntime.Instance.GetFirstOrDefaultService<IRuntimeService>();
-                var assemblies = runtimeService.LoadBundleAssembly((string)symbolicName);
+                var assemblies = runtimeService.LoadBundleAssembly(symbolicName);
 
                 foreach (var assembly in assemblies)
                 {
                     foreach (var type in assembly.GetTypes())
                     {
-                        if (type.Name.Contains(controllerTypeName) && typeof(IController).IsAssignableFrom(type))
+                        if (type.Name.Contains(controllerTypeName) && typeof (IController).IsAssignableFrom(type))
                         {
                             controllerType = type;
-                            ControllerTypeCache.AddControllerType(symbolicName.ToString(), controllerName, controllerType);
-                            FileLogUtility.Inform(string.Format("Loaded controller '{0}' from bundle '{1}' and then added to cache.", controllerName, symbolicName));
+                            ControllerTypeCache.AddControllerType(symbolicName, controllerName, controllerType);
+                            FileLogUtility.Inform(
+                                string.Format("Loaded controller '{0}' from bundle '{1}' and then added to cache.",
+                                    controllerName, symbolicName));
                             return controllerType;
                         }
                     }
                 }
 
-                FileLogUtility.Error(string.Format("Failed to load controller '{0}' from bundle '{1}'.", controllerName, symbolicName));
+                FileLogUtility.Error(string.Format("Failed to load controller '{0}' from bundle '{1}'.", controllerName,
+                    symbolicName));
             }
 
-            FileLogUtility.Error(string.Format("Failed to load controller '{0}' since the plugin name is not specified.", controllerName));
+            FileLogUtility.Error(string.Format(
+                "Failed to load controller '{0}' since the plugin name is not specified.", controllerName));
 
             return null;
-        }
-
-
-
-        public SessionStateBehavior GetControllerSessionBehavior(System.Web.Routing.RequestContext requestContext, string controllerName)
-        {
-            var controllerType = GetControllerType(requestContext.GetPluginSymbolicName(), controllerName);
-            if (controllerType == null) return SessionStateBehavior.Default;
-
-            var attribute = controllerType.GetCustomAttributes(typeof(SessionStateAttribute), true).OfType<SessionStateAttribute>().FirstOrDefault<SessionStateAttribute>();
-            if (attribute == null) return SessionStateBehavior.Default;
-            return attribute.Behavior;
-        }
-
-        public void ReleaseController(IController controller)
-        {
-            IDisposable disposable = controller as IDisposable;
-            if (disposable != null) disposable.Dispose();
         }
     }
 }

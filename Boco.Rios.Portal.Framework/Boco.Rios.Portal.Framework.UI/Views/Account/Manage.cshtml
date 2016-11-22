@@ -9,14 +9,16 @@
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<p>你已使用 <strong>@User.Identity.Name</strong>. 身份登录。</p>
+<p>
+    你已使用 <strong>@User.Identity.Name</strong>. 身份登录。
+</p>
 
 @if (ViewBag.HasLocalPassword)
 {
     @Html.Partial("_ChangePasswordPartial")
 }
 else
-{ 
+{
     @Html.Partial("_SetPasswordPartial")
 }
 
@@ -24,7 +26,7 @@ else
     @Html.Action("RemoveExternalLogins")
 
     <h3>添加外部登录</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    @Html.Action("ExternalLoginsList", new {ViewBag.ReturnUrl})
 </section>
 
 @section Scripts {

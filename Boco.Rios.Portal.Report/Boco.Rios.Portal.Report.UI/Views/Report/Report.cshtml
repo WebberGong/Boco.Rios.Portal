@@ -8,7 +8,7 @@
         <button id="btnQuery1" class="k-button" type="button">查询</button>
         <div id="grid1"></div>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function() {
                 var url = reportServiceBaseUrl + 'api/json/reply/ReportRequest';
                 var param = { Name: "gong" };
                 var dataSource = new kendo.data.DataSource({
@@ -23,10 +23,10 @@
                     },
                     pageSize: 20,
                     schema: {
-                        data: function (result) {
+                        data: function(result) {
                             return result.Data;
                         },
-                        total: function (result) {
+                        total: function(result) {
                             return result.TotalCount;
                         }
                     },
@@ -58,7 +58,7 @@
                 });
             });
 
-            $("#btnQuery1").click(function () {
+            $("#btnQuery1").click(function() {
                 $("#grid1").data("kendoGrid").dataSource.read();
             });
         </script>

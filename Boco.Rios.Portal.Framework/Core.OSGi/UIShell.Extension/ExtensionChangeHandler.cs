@@ -9,35 +9,10 @@ namespace UIShell.Extension
         {
         }
 
-        public ExtensionChangeHandler(IExtensionBuilder builder, Action<object> newItemHandler, Action<object> extensionRemovedHandler)
+        public ExtensionChangeHandler(IExtensionBuilder builder, Action<object> newItemHandler,
+            Action<object> extensionRemovedHandler)
         {
             Initialize(builder, newItemHandler, extensionRemovedHandler);
-        }
-
-        protected void Initialize(IExtensionBuilder builder, Action<object> newItemHandler, Action<object> extensionRemovedHandler)
-        {
-            Builder = builder;
-            NewItemHandler = newItemHandler;
-            RemoveItemHandler = extensionRemovedHandler;
-
-            builder.ItemAdded += builder_ItemAdded;
-            builder.ItemRemoved += builder_ItemRemoved;
-        }
-
-        void builder_ItemRemoved(object sender, EventArgs<object> e)
-        {
-            if (RemoveItemHandler != null)
-            {
-                RemoveItemHandler(e.Item);
-            }
-        }
-
-        void builder_ItemAdded(object sender, EventArgs<object> e)
-        {
-            if (NewItemHandler != null)
-            {
-                NewItemHandler(e.Item);
-            }
         }
 
         public IExtensionBuilder Builder { get; protected set; }
@@ -48,6 +23,33 @@ namespace UIShell.Extension
         {
             Builder.ItemAdded -= builder_ItemAdded;
             Builder.ItemRemoved -= builder_ItemRemoved;
+        }
+
+        protected void Initialize(IExtensionBuilder builder, Action<object> newItemHandler,
+            Action<object> extensionRemovedHandler)
+        {
+            Builder = builder;
+            NewItemHandler = newItemHandler;
+            RemoveItemHandler = extensionRemovedHandler;
+
+            builder.ItemAdded += builder_ItemAdded;
+            builder.ItemRemoved += builder_ItemRemoved;
+        }
+
+        private void builder_ItemRemoved(object sender, EventArgs<object> e)
+        {
+            if (RemoveItemHandler != null)
+            {
+                RemoveItemHandler(e.Item);
+            }
+        }
+
+        private void builder_ItemAdded(object sender, EventArgs<object> e)
+        {
+            if (NewItemHandler != null)
+            {
+                NewItemHandler(e.Item);
+            }
         }
     }
 }

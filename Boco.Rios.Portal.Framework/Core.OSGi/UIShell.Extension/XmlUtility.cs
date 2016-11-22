@@ -11,7 +11,7 @@ namespace UIShell.Extension
 
         public static string ReadAttribute(XmlAttributeCollection attributes, string attributeName)
         {
-            XmlAttribute attr = attributes[attributeName];
+            var attr = attributes[attributeName];
             if (attr != null)
             {
                 return attr.Value;

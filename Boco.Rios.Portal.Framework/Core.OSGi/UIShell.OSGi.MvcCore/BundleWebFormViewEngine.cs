@@ -5,17 +5,17 @@ namespace UIShell.OSGi.MvcCore
 {
     public class BundleWebFormViewEngine : WebFormViewEngine, IBundleViewEngine
     {
-
-
         public BundleWebFormViewEngine(IBundle bundle)
         {
             Bundle = bundle;
-            string bundleRelativePath = Utility.MapPathReverse(bundle.Location);
+            var bundleRelativePath = Utility.MapPathReverse(bundle.Location);
 
             MasterLocationFormats = Utility.RedirectToBundlePath(MasterLocationFormats, bundleRelativePath).ToArray();
-            AreaMasterLocationFormats = Utility.RedirectToBundlePath(AreaMasterLocationFormats, bundleRelativePath).ToArray();
+            AreaMasterLocationFormats =
+                Utility.RedirectToBundlePath(AreaMasterLocationFormats, bundleRelativePath).ToArray();
             ViewLocationFormats = Utility.RedirectToBundlePath(ViewLocationFormats, bundleRelativePath).ToArray();
-            AreaViewLocationFormats = Utility.RedirectToBundlePath(AreaViewLocationFormats, bundleRelativePath).ToArray();
+            AreaViewLocationFormats =
+                Utility.RedirectToBundlePath(AreaViewLocationFormats, bundleRelativePath).ToArray();
         }
 
         public IBundle Bundle { get; private set; }
@@ -26,9 +26,8 @@ namespace UIShell.OSGi.MvcCore
         }
 
 
-
         public override ViewEngineResult FindView(ControllerContext controllerContext, string viewName,
-                                                  string masterName, bool useCache)
+            string masterName, bool useCache)
         {
             object symbolicName = controllerContext.GetPluginSymbolicName();
             if (symbolicName != null && Bundle.SymbolicName.Equals(symbolicName))
@@ -39,7 +38,7 @@ namespace UIShell.OSGi.MvcCore
         }
 
         public override ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName,
-                                                         bool useCache)
+            bool useCache)
         {
             object symbolicName = controllerContext.GetPluginSymbolicName();
             if (symbolicName != null && Bundle.SymbolicName.Equals(symbolicName))

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using UIShell.OSGi;
+﻿using UIShell.OSGi;
 
 namespace Boco.Rios.Portal.Management.UI
 {
@@ -10,12 +6,10 @@ namespace Boco.Rios.Portal.Management.UI
     {
         public void Start(IBundleContext context)
         {
-            
         }
 
         public void Stop(IBundleContext context)
         {
-            
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Boco.Rios.Portal.HomePage.Entity;
 using Boco.Rios.Portal.HomePage.Persistence.DaoService;
 
@@ -10,8 +7,8 @@ namespace Boco.Rios.Portal.HomePage.DomainModel
     public class CellDomainModel
     {
         private static CellDomainModel instance;
-        private static object syncObj = new object();
-        private CellDaoService daoService = new CellDaoService();
+        private static readonly object syncObj = new object();
+        private readonly CellDaoService daoService = new CellDaoService();
 
         private CellDomainModel()
         {

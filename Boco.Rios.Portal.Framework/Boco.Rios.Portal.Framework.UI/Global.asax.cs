@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Boco.Rios.Portal.Framework.UI;
 using Boco.Rios.Portal.Framework.UI.Extension;
+using Boco.Rios.Portal.Framework.UI.Models;
+using ServiceStack.MiniProfiler;
 using UIShell.Extension;
 using UIShell.OSGi;
 using UIShell.OSGi.Core.Service;
 using UIShell.OSGi.MvcCore;
-using Boco.Rios.Portal.Framework.UI.Models;
 
-[assembly: PreApplicationStartMethod(typeof(MvcApplication), "StartBundleRuntime")]
+[assembly: PreApplicationStartMethod(typeof (MvcApplication), "StartBundleRuntime")]
+
 namespace Boco.Rios.Portal.Framework.UI
 {
     // 注意: 有关启用 IIS6 或 IIS7 经典模式的说明，
     // 请访问 http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         private ExtensionHooker _extensionHooker;
 
@@ -64,12 +63,12 @@ namespace Boco.Rios.Portal.Framework.UI
         protected void Application_BeginRequest(object src, EventArgs e)
         {
             if (Request.IsLocal)
-                ServiceStack.MiniProfiler.Profiler.Start();
+                Profiler.Start();
         }
 
         protected void Application_EndRequest(object src, EventArgs e)
         {
-            ServiceStack.MiniProfiler.Profiler.Stop();
+            Profiler.Stop();
         }
     }
 }

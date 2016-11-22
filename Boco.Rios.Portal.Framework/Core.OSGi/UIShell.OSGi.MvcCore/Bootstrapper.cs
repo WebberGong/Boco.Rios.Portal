@@ -1,26 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Hosting;
-using UIShell.OSGi.MvcCore;
-using UIShell.OSGi.Utility;
-using System.Threading;
 using System.Reflection;
-using UIShell.OSGi.Configuration.BundleManifest;
 using System.Web.Compilation;
-using System.IO;
+using System.Web.Mvc;
+using UIShell.OSGi.Configuration.BundleManifest;
 using UIShell.OSGi.Core.Service;
 using UIShell.OSGi.Loader;
-using System.Web.Mvc;
-using System.Web.Routing;
-
+using UIShell.OSGi.Utility;
 
 namespace UIShell.OSGi.MvcCore
 {
     public class Bootstrapper
     {
-        private static readonly Dictionary<BundleData, IList<Assembly>> RegisteredBunldeCache = new Dictionary<BundleData, IList<Assembly>>();
+        private static readonly Dictionary<BundleData, IList<Assembly>> RegisteredBunldeCache =
+            new Dictionary<BundleData, IList<Assembly>>();
 
         public BundleRuntime BundleRuntime { get; private set; }
 
@@ -57,14 +50,14 @@ namespace UIShell.OSGi.MvcCore
             {
                 var bundleData =
                     BundleRuntime.Instance.GetFirstOrDefaultService<IBundleInstallerService>()
-                                 .GetBundleDataByName(bundle.SymbolicName);
+                        .GetBundleDataByName(bundle.SymbolicName);
                 if (bundleData == null)
                 {
                     continue;
                 }
 
                 //register bundle assemblies to BuildManager.
-                var assemblies = this.AddReferencedAssemblies(bundleData.SymbolicName);
+                var assemblies = AddReferencedAssemblies(bundleData.SymbolicName);
                 FileLogUtility.Debug(string.Format("Loaded assembiles from bundle {0}", bundle.SymbolicName));
                 if (assemblies != null && assemblies.Count > 0)
                 {
@@ -80,7 +73,7 @@ namespace UIShell.OSGi.MvcCore
 
         protected virtual void AddPreDefinedRefAssemblies()
         {
-            AddReferencedAssembly(typeof(BundleRuntime).Assembly);
+            AddReferencedAssembly(typeof (BundleRuntime).Assembly);
 
             AddReferencedAssembly(GetType().Assembly);
         }
@@ -99,7 +92,9 @@ namespace UIShell.OSGi.MvcCore
         public virtual IList<Assembly> AddReferencedAssemblies(string bundleSymbolicName)
         {
             //Check if this bundle still exist or not.
-            var bundleData = BundleRuntime.Instance.GetFirstOrDefaultService<IBundleInstallerService>().GetBundleDataByName(bundleSymbolicName);
+            var bundleData =
+                BundleRuntime.Instance.GetFirstOrDefaultService<IBundleInstallerService>()
+                    .GetBundleDataByName(bundleSymbolicName);
             if (bundleData == null)
             {
                 return new List<Assembly>();
@@ -126,7 +121,7 @@ namespace UIShell.OSGi.MvcCore
         {
             if (assemblies != null)
             {
-                foreach (Assembly assembly in assemblies)
+                foreach (var assembly in assemblies)
                 {
                     RemoveReferencedAssemlby(assembly);
                 }
@@ -140,7 +135,7 @@ namespace UIShell.OSGi.MvcCore
 
             FileLogUtility.Debug(
                 string.Format("Add assembly '{0} to top level referenced assemblies.'",
-                assembly.FullName));
+                    assembly.FullName));
         }
 
         public void RemoveReferencedAssemlby(Assembly assembly)
@@ -148,14 +143,13 @@ namespace UIShell.OSGi.MvcCore
             //todo:use reflection to remove assembly to Build Manager
             FileLogUtility.Debug(
                 string.Format("Remove assembly '{0} from top level referenced assemblies.'",
-                assembly.FullName));
+                    assembly.FullName));
         }
 
         public void RestartAppDomain()
         {
             //todo:RestartAppDomain
         }
-
 
         #endregion
     }

@@ -1,9 +1,5 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using System.Collections;
 using Boco.Rios.Framework.Persistence;
 using Boco.Rios.Portal.Management.Entity;
 using Boco.Rios.Portal.Management.Persistence.IDao;
@@ -32,19 +28,19 @@ namespace Boco.Rios.Portal.Management.Persistence.Dao
 
         public object InsertNotice(Notice notice)
         {
-            object result = ExecuteInsert("InsertNotice", notice);
+            var result = ExecuteInsert("InsertNotice", notice);
             return result;
         }
 
         public int UpdateNotice(Notice notice)
         {
-            int result = ExecuteUpdate("UpdateNotice", notice);
+            var result = ExecuteUpdate("UpdateNotice", notice);
             return result;
         }
 
         public int DeleteNotice(Notice notice)
         {
-            int result = ExecuteDelete("DeleteNotice", notice);
+            var result = ExecuteDelete("DeleteNotice", notice);
             return result;
         }
 

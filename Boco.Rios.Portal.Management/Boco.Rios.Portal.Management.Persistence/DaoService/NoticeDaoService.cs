@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Collections;
+﻿using System.Collections.Generic;
 using Boco.Rios.Framework.Persistence;
 using Boco.Rios.Portal.Management.Entity;
 using Boco.Rios.Portal.Management.Persistence.IDao;

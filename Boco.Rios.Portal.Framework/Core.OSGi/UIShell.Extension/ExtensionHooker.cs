@@ -20,9 +20,19 @@ namespace UIShell.Extension
             _extensionManager.ExtensionChanged += _extensionManager_ExtensionChanged;
         }
 
+        public void Dispose()
+        {
+            _extensionManager.ExtensionChanged -= _extensionManager_ExtensionChanged;
+            foreach (var extensionChangeHandlder in _extensionBuilders)
+            {
+                extensionChangeHandlder.Value.Dispose();
+            }
+        }
+
         private void _extensionManager_ExtensionChanged(object sender, ExtensionEventArgs e)
         {
-            if (BundleRuntime.Instance.State != BundleRuntimeState.Starting && BundleRuntime.Instance.State != BundleRuntimeState.Started)
+            if (BundleRuntime.Instance.State != BundleRuntimeState.Starting &&
+                BundleRuntime.Instance.State != BundleRuntimeState.Started)
             {
                 return;
             }
@@ -58,15 +68,6 @@ namespace UIShell.Extension
 
             //load the extensions which bundle already be active.
             LoadExistingExtensions(extensionPointName, _extensionBuilders[extensionPointName]);
-        }
-
-        public void Dispose()
-        {
-            _extensionManager.ExtensionChanged -= _extensionManager_ExtensionChanged;
-            foreach (var extensionChangeHandlder in _extensionBuilders)
-            {
-                extensionChangeHandlder.Value.Dispose();
-            }
         }
     }
 }

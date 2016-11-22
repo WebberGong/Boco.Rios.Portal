@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Boco.Rios.Portal.Framework.UI.Models
+﻿namespace Boco.Rios.Portal.Framework.UI.Models
 {
     public class MenuItem
     {

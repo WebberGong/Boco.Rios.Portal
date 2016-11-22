@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Boco.Rios.Portal.HomePage.Entity
+﻿namespace Boco.Rios.Portal.HomePage.Entity
 {
     public class Cell
     {

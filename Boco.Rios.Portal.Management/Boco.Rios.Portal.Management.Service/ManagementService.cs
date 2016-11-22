@@ -1,15 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using Boco.Rios.Portal.Management.Data;
 using Boco.Rios.Portal.Management.DomainModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
 
 namespace Boco.Rios.Portal.Management.Service
 {
-    [Export("Service", typeof(ServiceStack.ServiceInterface.Service))]
+    [Export("Service", typeof (ServiceStack.ServiceInterface.Service))]
     [PartCreationPolicy(CreationPolicy.Shared)]
     public class ManagementService : ServiceStack.ServiceInterface.Service
     {
@@ -24,18 +20,18 @@ namespace Boco.Rios.Portal.Management.Service
                 request.Content = request.Content.Trim();
             }
             var result = NoticeDomainModel.Instance.GetNoticeByCondition(request.Title, request.Content);
-            return new NoticeListResponse() { Data = result, TotalCount = result.Count };
+            return new NoticeListResponse {Data = result, TotalCount = result.Count};
         }
 
         public NoticeListResponse Any(GetLatestNoticeRequest request)
         {
             var result = NoticeDomainModel.Instance.GetLatestNotice(request.TopN);
-            return new NoticeListResponse() { Data = result, TotalCount = result.Count };
+            return new NoticeListResponse {Data = result, TotalCount = result.Count};
         }
 
         public NoticeResponse Any(GetNoticeByIdRequest request)
         {
-            return new NoticeResponse { Data = NoticeDomainModel.Instance.GetNoticeById(request.Id) };
+            return new NoticeResponse {Data = NoticeDomainModel.Instance.GetNoticeById(request.Id)};
         }
 
         public object Any(UpdateNoticeRequest request)

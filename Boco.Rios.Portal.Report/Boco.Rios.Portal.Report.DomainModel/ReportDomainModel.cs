@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Boco.Rios.Portal.Report.DomainModel
 {
@@ -10,9 +7,9 @@ namespace Boco.Rios.Portal.Report.DomainModel
         public IList<Entity.Report> GetReports(string name)
         {
             IList<Entity.Report> result = new List<Entity.Report>();
-            for (int i = 0; i < 1000; i++)
+            for (var i = 0; i < 1000; i++)
             {
-                result.Add(new Entity.Report() { Name = name + (i + 1) });
+                result.Add(new Entity.Report {Name = name + (i + 1)});
             }
             return result;
         }

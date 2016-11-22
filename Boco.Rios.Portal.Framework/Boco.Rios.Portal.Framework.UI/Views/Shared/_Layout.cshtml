@@ -1,17 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@using Boco.Rios.Portal.Framework.UI
+@using Boco.Rios.Portal.Framework.UI.Models
+@using UIShell.OSGi
+<!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
     <title>网优门户</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css"/>
     <!--KendoUI声明区域-->
-    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.default.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.common.min.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.min.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.default.min.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="@Url.Content("~/Scripts/kendo/2013.3.1324/jquery.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/kendo/2013.3.1324/kendo.all.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
@@ -19,51 +22,53 @@
     <script type="text/javascript" src="~/Scripts/custom-common.js"></script>
     <script type="text/javascript">
         kendo.culture("zh-CN");
-        var homePageServiceBaseUrl = '@Boco.Rios.Portal.Framework.UI.AppHost.ServiceUrl["HomePageService"]';
-        var reportServiceBaseUrl = '@Boco.Rios.Portal.Framework.UI.AppHost.ServiceUrl["ReportService"]';
-        var managementServiceBaseUrl = '@Boco.Rios.Portal.Framework.UI.AppHost.ServiceUrl["ManagementService"]';
+        var homePageServiceBaseUrl = '@AppHost.ServiceUrl["HomePageService"]';
+        var reportServiceBaseUrl = '@AppHost.ServiceUrl["ReportService"]';
+        var managementServiceBaseUrl = '@AppHost.ServiceUrl["ManagementService"]';
     </script>
 </head>
 <body>
-    <div id="top">
-        <div id="logo"></div>
-        <div id="login">
-            <div style="float: right; margin-top: 10px; margin-right: 50px">
-                登录用户：admin &nbsp;&nbsp; 退出系统
-            </div>
+<div id="top">
+    <div id="logo"></div>
+    <div id="login">
+        <div style="float: right; margin-right: 50px; margin-top: 10px;">
+            登录用户：admin &nbsp;&nbsp; 退出系统
         </div>
     </div>
-    <div id="menu">
-        <div class="menu_bg_l">
-            <img src="~/Images/top_menu_l.gif" alt="" width="16" height="31" /></div>
-        <div class="menu_bg_r">
-            <ul>
-                @{
-                    var viewModel = UIShell.OSGi.BundleRuntime.Instance.GetFirstOrDefaultService<Boco.Rios.Portal.Framework.UI.Models.ApplicationViewModel>();
-                    if (viewModel != null)
+</div>
+<div id="menu">
+    <div class="menu_bg_l">
+        <img src="~/Images/top_menu_l.gif" alt="" width="16" height="31"/>
+    </div>
+    <div class="menu_bg_r">
+        <ul>
+            @{
+                var viewModel = BundleRuntime.Instance.GetFirstOrDefaultService<ApplicationViewModel>();
+                if (viewModel != null)
+                {
+                    foreach (var mainMenuItem in viewModel.MainMenuItems.OrderBy(item => item.Order))
                     {
-                        foreach (var mainMenuItem in viewModel.MainMenuItems.OrderBy(item => item.Order))
-                        {
-                            <li id="@mainMenuItem.Order"><a href="@mainMenuItem.Url">@mainMenuItem.Text</a>
-                            </li>
-                        }
+                        <li id="@mainMenuItem.Order">
+                            <a href="@mainMenuItem.Url">@mainMenuItem.Text</a>
+                        </li>
                     }
                 }
-            </ul>
+            }
+        </ul>
+    </div>
+</div>
+<div id="main">
+    @RenderSection("featured", false)
+    <section class="content-wrapper main-content clear-fix">
+        @RenderBody()
+    </section>
+</div>
+<div id="bottom">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p>北京亿阳信通股份有限公司 版权所有 2014-2020</p>
         </div>
     </div>
-    <div id="main">
-        @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-        </section>
-    </div>
-    <div id="bottom">
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>北京亿阳信通股份有限公司 版权所有 2014-2020</p>
-            </div>
-        </div>
-    </div>
+</div>
 </body>
 </html>

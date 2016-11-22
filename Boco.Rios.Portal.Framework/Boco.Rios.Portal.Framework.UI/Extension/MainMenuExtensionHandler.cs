@@ -3,7 +3,7 @@ using UIShell.Extension;
 
 namespace Boco.Rios.Portal.Framework.UI.Extension
 {
-    class MainMenuExtensionHandler : ExtensionChangeHandler
+    internal class MainMenuExtensionHandler : ExtensionChangeHandler
     {
         private readonly ApplicationViewModel _viewModel;
 
@@ -15,12 +15,12 @@ namespace Boco.Rios.Portal.Framework.UI.Extension
 
         private void OnNewItem(object item)
         {
-            _viewModel.MainMenuItems.Add((MenuItem)item);
+            _viewModel.MainMenuItems.Add((MenuItem) item);
         }
 
         private void OnRemoveItem(object item)
         {
-            _viewModel.MainMenuItems.Remove((MenuItem)item);
+            _viewModel.MainMenuItems.Remove((MenuItem) item);
         }
     }
 }

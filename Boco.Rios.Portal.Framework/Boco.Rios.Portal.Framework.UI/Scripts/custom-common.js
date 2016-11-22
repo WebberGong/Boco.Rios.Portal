@@ -14,17 +14,18 @@
             var minute = dateTime.getMinutes();
             var second = dateTime.getSeconds();
             var result = year + "-" +
-            padLeft(month, 2) + "-" +
-            padLeft(day, 2) + " " +
-            padLeft(hour, 2) + ":" +
-            padLeft(minute, 2) + ":" +
-            padLeft(second, 2);
+                padLeft(month, 2) + "-" +
+                padLeft(day, 2) + " " +
+                padLeft(hour, 2) + ":" +
+                padLeft(minute, 2) + ":" +
+                padLeft(second, 2);
             return result;
         } catch (e) {
             return dateTime;
-        } 
+        }
     }
 };
+
 function dateTime_LocalToUtc(dateTime) {
     if (dateTime == null || dateTime == "") {
         return dateTime;
@@ -44,36 +45,42 @@ function dateTime_LocalToUtc(dateTime) {
             return new Date(year, month, day, hour, minute, second);
         } catch (e) {
             return dateTime;
-        } 
+        }
     } else {
         return dateTime;
     }
 };
+
 function padLeft(str, lenght) {
     if (str.length >= lenght)
         return str.substring(str.length - lenght);
     else
         return padLeft("0" + str, lenght);
 };
+
 function padRight(str, lenght) {
     if (str.length >= lenght)
         return str.substring(str.length - lenght);
     else
         return padRight(str + "0", lenght);
 };
+
 function htmlEncode(str) {
     var div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
 };
+
 function htmlDecode(str) {
-    var div = document.createElement('div');
+    var div = document.createElement("div");
     div.innerHTML = str;
     return div.innerText || div.textContent;
 };
+
 function guid() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 };
+
 function generateGUID() {
     var id = (guid() + guid() + "-" + guid() + "-" + guid() + "-" +
         guid() + "-" + guid() + guid() + guid()).toUpperCase();

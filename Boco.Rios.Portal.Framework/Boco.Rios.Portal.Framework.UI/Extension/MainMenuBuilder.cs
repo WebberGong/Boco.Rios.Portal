@@ -1,5 +1,5 @@
-﻿using Boco.Rios.Portal.Framework.UI.Models;
-using System.Xml;
+﻿using System.Xml;
+using Boco.Rios.Portal.Framework.UI.Models;
 using UIShell.Extension;
 using UIShell.OSGi;
 
@@ -9,7 +9,7 @@ namespace Boco.Rios.Portal.Framework.UI.Extension
     {
         public override void Build(XmlNode xmlNode, IBundle owner)
         {
-            MenuItem newItem = MenuItemParser.Build(xmlNode, owner);
+            var newItem = MenuItemParser.Build(xmlNode, owner);
             Items.Add(newItem);
             OnItemAdded(newItem);
         }

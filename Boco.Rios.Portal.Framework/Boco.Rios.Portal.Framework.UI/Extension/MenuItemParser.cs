@@ -1,6 +1,6 @@
-﻿using Boco.Rios.Portal.Framework.UI.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Xml;
+using Boco.Rios.Portal.Framework.UI.Models;
 using UIShell.Extension;
 using UIShell.OSGi;
 
@@ -11,7 +11,7 @@ namespace Boco.Rios.Portal.Framework.UI.Extension
         public static List<MenuItem> Build(XmlNodeList nodes, IBundle owner)
         {
             var result = new List<MenuItem>();
-            for (int i = 0; i < nodes.Count; i++)
+            for (var i = 0; i < nodes.Count; i++)
             {
                 if (nodes[i].NodeType == XmlNodeType.Element)
                     result.Add(Build(nodes[i], owner));
@@ -22,7 +22,7 @@ namespace Boco.Rios.Portal.Framework.UI.Extension
         public static List<MenuItem> Build(IEnumerable<XmlNode> nodes, IBundle owner)
         {
             var result = new List<MenuItem>();
-            foreach (XmlNode item in nodes)
+            foreach (var item in nodes)
             {
                 if (item.NodeType == XmlNodeType.Element)
                     result.Add(Build(item, owner));

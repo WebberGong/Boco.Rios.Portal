@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Bundle xmlns="urn:uiosp-bundle-manifest-2.0" Name="Boco.Rios.Portal.HomePage.UI" SymbolicName="Boco.Rios.Portal.HomePage.UI" Version="1.0.0.0" InitializedState="Active">
+
+<Bundle xmlns="urn:uiosp-bundle-manifest-2.0" Name="Boco.Rios.Portal.HomePage.UI"
+        SymbolicName="Boco.Rios.Portal.HomePage.UI" Version="1.0.0.0" InitializedState="Active">
   <Activator Type="Boco.Rios.Portal.HomePage.UI.Activator" Policy="Immediate" />
   <Runtime>
     <Assembly Path="bin\Boco.Rios.Portal.HomePage.UI.dll" Share="false" />
   </Runtime>
 
   <Extension Point="MainMenu">
-    <Item url="/HomePage/QueryCells?plugin=Boco.Rios.Portal.HomePage.UI" text="小区查询" order="1"/>
-    <Item url="/HomePage/HomePage?plugin=Boco.Rios.Portal.HomePage.UI" text="门户首页" order="1"/>
+    <Item url="/HomePage/QueryCells?plugin=Boco.Rios.Portal.HomePage.UI" text="小区查询" order="1" />
+    <Item url="/HomePage/HomePage?plugin=Boco.Rios.Portal.HomePage.UI" text="门户首页" order="1" />
   </Extension>
 </Bundle>

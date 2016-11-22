@@ -1,31 +1,32 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Boco.Rios.Portal.HomePage.Service;
 using System.Xml;
+using Boco.Rios.Portal.HomePage.Service;
+using Boco.Rios.Portal.HomePage.UI;
+using Funq;
 using ServiceStack.WebHost.Endpoints;
+using WebActivator;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(Boco.Rios.Portal.HomePage.UI.AppHost), "Start")]
+[assembly: PreApplicationStartMethod(typeof (AppHost), "Start")]
+
 namespace Boco.Rios.Portal.HomePage.UI
 {
     public class AppHost : AppHostBase
     {
-        private static Dictionary<string, string> serviceUrl = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> serviceUrl = new Dictionary<string, string>();
 
         private AppHost()
-            : base("Boco.Rios.Portal.Service", typeof(HomePageService).Assembly)
+            : base("Boco.Rios.Portal.Service", typeof (HomePageService).Assembly)
         {
         }
 
         public static Dictionary<string, string> ServiceUrl
         {
-            get
-            {
-                return serviceUrl;
-            }
+            get { return serviceUrl; }
         }
 
-        public override void Configure(Funq.Container container)
+        public override void Configure(Container container)
         {
         }
 
@@ -39,13 +40,13 @@ namespace Boco.Rios.Portal.HomePage.UI
 
         private static void FillServiceUrl()
         {
-            XmlDocument doc = new XmlDocument();
+            var doc = new XmlDocument();
             doc.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ServiceConfig.xml"));
-            XmlNodeList serviceConfig = doc.GetElementsByTagName("ServiceConfig");
+            var serviceConfig = doc.GetElementsByTagName("ServiceConfig");
             foreach (XmlNode node in serviceConfig)
             {
-                string key = "";
-                string value = "";
+                var key = "";
+                var value = "";
                 foreach (XmlNode childNode in node.ChildNodes)
                 {
                     if (childNode.Name == "ServiceName")

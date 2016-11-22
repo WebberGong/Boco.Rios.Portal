@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using DotNetOpenAuth.AspNet;
-using Microsoft.Web.WebPages.OAuth;
-using WebMatrix.WebData;
 using Boco.Rios.Portal.Framework.UI.Filters;
 using Boco.Rios.Portal.Framework.UI.Models;
+using Microsoft.Web.WebPages.OAuth;
+using WebMatrix.WebData;
 
 namespace Boco.Rios.Portal.Framework.UI.Controllers
 {
@@ -35,7 +33,7 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -100,16 +98,18 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Disassociate(string provider, string providerUserId)
         {
-            string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
+            var ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
             ManageMessageId? message = null;
 
             // 只有在当前登录用户是所有者时才取消关联帐户
             if (ownerAccount == User.Identity.Name)
             {
                 // 使用事务来防止用户删除其上次使用的登录凭据
-                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
+                using (
+                    var scope = new TransactionScope(TransactionScopeOption.Required,
+                        new TransactionOptions {IsolationLevel = IsolationLevel.Serializable}))
                 {
-                    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+                    var hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
                     if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
                     {
                         OAuthWebSecurity.DeleteAccount(provider, providerUserId);
@@ -119,7 +119,7 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
                 }
             }
 
-            return RedirectToAction("Manage", new { Message = message });
+            return RedirectToAction("Manage", new {Message = message});
         }
 
         //
@@ -128,10 +128,13 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "已更改你的密码。"
-                : message == ManageMessageId.SetPasswordSuccess ? "已设置你的密码。"
-                : message == ManageMessageId.RemoveLoginSuccess ? "已删除外部登录。"
-                : "";
+                message == ManageMessageId.ChangePasswordSuccess
+                    ? "已更改你的密码。"
+                    : message == ManageMessageId.SetPasswordSuccess
+                        ? "已设置你的密码。"
+                        : message == ManageMessageId.RemoveLoginSuccess
+                            ? "已删除外部登录。"
+                            : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
@@ -144,7 +147,7 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {
-            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            var hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
             if (hasLocalAccount)
@@ -155,7 +158,8 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
                     bool changePasswordSucceeded;
                     try
                     {
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword,
+                            model.NewPassword);
                     }
                     catch (Exception)
                     {
@@ -164,19 +168,16 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
 
                     if (changePasswordSucceeded)
                     {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        return RedirectToAction("Manage", new {Message = ManageMessageId.ChangePasswordSuccess});
                     }
-                    else
-                    {
-                        ModelState.AddModelError("", "当前密码不正确或新密码无效。");
-                    }
+                    ModelState.AddModelError("", "当前密码不正确或新密码无效。");
                 }
             }
             else
             {
                 // 用户没有本地密码，因此将删除由于缺少
                 // OldPassword 字段而导致的所有验证错误
-                ModelState state = ModelState["OldPassword"];
+                var state = ModelState["OldPassword"];
                 if (state != null)
                 {
                     state.Errors.Clear();
@@ -187,7 +188,7 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
                     try
                     {
                         WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+                        return RedirectToAction("Manage", new {Message = ManageMessageId.SetPasswordSuccess});
                     }
                     catch (Exception e)
                     {
@@ -208,7 +209,7 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new {ReturnUrl = returnUrl}));
         }
 
         //
@@ -217,13 +218,14 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl)
         {
-            AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            var result =
+                OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new {ReturnUrl = returnUrl}));
             if (!result.IsSuccessful)
             {
                 return RedirectToAction("ExternalLoginFailure");
             }
 
-            if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
+            if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, false))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -234,14 +236,12 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
                 OAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, User.Identity.Name);
                 return RedirectToLocal(returnUrl);
             }
-            else
-            {
-                // 该用户是新用户，因此将要求该用户提供所需的成员名称
-                string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
-                ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
-                ViewBag.ReturnUrl = returnUrl;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
-            }
+            // 该用户是新用户，因此将要求该用户提供所需的成员名称
+            var loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
+            ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
+            ViewBag.ReturnUrl = returnUrl;
+            return View("ExternalLoginConfirmation",
+                new RegisterExternalLoginModel {UserName = result.UserName, ExternalLoginData = loginData});
         }
 
         //
@@ -255,7 +255,8 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
             string provider = null;
             string providerUserId = null;
 
-            if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
+            if (User.Identity.IsAuthenticated ||
+                !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
             {
                 return RedirectToAction("Manage");
             }
@@ -263,25 +264,22 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
             if (ModelState.IsValid)
             {
                 // 将新用户插入到数据库
-                using (UsersContext db = new UsersContext())
+                using (var db = new UsersContext())
                 {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                    var user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // 检查用户是否已存在
                     if (user == null)
                     {
                         // 将名称插入到配置文件表
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        db.UserProfiles.Add(new UserProfile {UserName = model.UserName});
                         db.SaveChanges();
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
-                        OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
+                        OAuthWebSecurity.Login(provider, providerUserId, false);
 
                         return RedirectToLocal(returnUrl);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("UserName", "用户名已存在。请输入其他用户名。");
-                    }
+                    ModelState.AddModelError("UserName", "用户名已存在。请输入其他用户名。");
                 }
             }
 
@@ -310,42 +308,41 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
         [ChildActionOnly]
         public ActionResult RemoveExternalLogins()
         {
-            ICollection<OAuthAccount> accounts = OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name);
-            List<ExternalLogin> externalLogins = new List<ExternalLogin>();
-            foreach (OAuthAccount account in accounts)
+            var accounts = OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name);
+            var externalLogins = new List<ExternalLogin>();
+            foreach (var account in accounts)
             {
-                AuthenticationClientData clientData = OAuthWebSecurity.GetOAuthClientData(account.Provider);
+                var clientData = OAuthWebSecurity.GetOAuthClientData(account.Provider);
 
                 externalLogins.Add(new ExternalLogin
                 {
                     Provider = account.Provider,
                     ProviderDisplayName = clientData.DisplayName,
-                    ProviderUserId = account.ProviderUserId,
+                    ProviderUserId = account.ProviderUserId
                 });
             }
 
-            ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            ViewBag.ShowRemoveButton = externalLogins.Count > 1 ||
+                                       OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
         #region 帮助程序
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            return RedirectToAction("Index", "Home");
         }
 
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
             SetPasswordSuccess,
-            RemoveLoginSuccess,
+            RemoveLoginSuccess
         }
 
         internal class ExternalLoginResult : ActionResult
@@ -402,6 +399,7 @@ namespace Boco.Rios.Portal.Framework.UI.Controllers
                     return "发生未知错误。请验证您的输入并重试。如果问题仍然存在，请与系统管理员联系。";
             }
         }
+
         #endregion
     }
 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using Boco.Rios.Portal.HomePage.UI.Models;
-
-namespace Boco.Rios.Portal.HomePage.UI
+﻿namespace Boco.Rios.Portal.HomePage.UI
 {
     public static class AuthConfig
     {

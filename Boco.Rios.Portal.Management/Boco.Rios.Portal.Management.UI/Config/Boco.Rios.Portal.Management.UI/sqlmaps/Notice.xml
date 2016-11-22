@@ -1,24 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <!--定义一个sqlMap映射，可以有多个-->
-<sqlMap namespace="Boco.Rios.Portal.Management" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+<sqlMap namespace="Boco.Rios.Portal.Management" xmlns="http://ibatis.apache.org/mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!--定义别名-->
   <alias>
-    <typeAlias alias="Notice" type="Boco.Rios.Portal.Management.Entity.Notice,Boco.Rios.Portal.Management.Entity"/>
+    <typeAlias alias="Notice" type="Boco.Rios.Portal.Management.Entity.Notice,Boco.Rios.Portal.Management.Entity" />
   </alias>
 
   <!--定义结果映射-->
   <resultMaps>
     <resultMap id="NoticeResult" class="Notice">
-      <result column="ID" property="Id"/>
-      <result column="TITLE" property="Title"/>
-      <result column="CONTENT" property="Content"/>
-      <result column="START_VALID_TIME" property="StartValidTime"/>
-      <result column="END_VALID_TIME" property="EndValidTime"/>
-      <result column="RELEASE_TIME" property="ReleaseTime"/>
-      <result column="RELEASE_USER_ID" property="ReleaseUserId"/>
-      <result column="RELEASE_STATE" property="ReleaseState"/>
-      <result column="CREATE_TIME" property="CreateTime"/>
-      <result column="CREATE_USER_ID" property="CreateUserId"/>
+      <result column="ID" property="Id" />
+      <result column="TITLE" property="Title" />
+      <result column="CONTENT" property="Content" />
+      <result column="START_VALID_TIME" property="StartValidTime" />
+      <result column="END_VALID_TIME" property="EndValidTime" />
+      <result column="RELEASE_TIME" property="ReleaseTime" />
+      <result column="RELEASE_USER_ID" property="ReleaseUserId" />
+      <result column="RELEASE_STATE" property="ReleaseState" />
+      <result column="CREATE_TIME" property="CreateTime" />
+      <result column="CREATE_USER_ID" property="CreateUserId" />
     </resultMap>
   </resultMaps>
 

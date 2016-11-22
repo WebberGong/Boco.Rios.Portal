@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Boco.Rios.Portal.Report.Data
 {
@@ -11,13 +8,12 @@ namespace Boco.Rios.Portal.Report.Data
         {
             Data = new List<Entity.Report>();
         }
+
         public IList<Entity.Report> Data { get; set; }
+
         public int TotalCount
         {
-            get
-            {
-                return Data == null ? 0 : Data.Count;
-            }
+            get { return Data == null ? 0 : Data.Count; }
         }
     }
 }

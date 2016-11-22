@@ -1,13 +1,13 @@
 ﻿using System;
+using System.IO;
 using System.Web.Hosting;
 using UIShell.OSGi.Utility;
-using System.IO;
 
 namespace UIShell.OSGi.MvcCore
 {
     public static class BundleUrlHelper
     {
-        private static string _webRootPath;
+        private static readonly string _webRootPath;
 
         static BundleUrlHelper()
         {
@@ -29,7 +29,7 @@ namespace UIShell.OSGi.MvcCore
 
         public static string Content(string symbolicName, string url)
         {
-            IBundle bundle = BundleRuntime.Instance.Framework.Bundles.GetBundleBySymbolicName(symbolicName);
+            var bundle = BundleRuntime.Instance.Framework.Bundles.GetBundleBySymbolicName(symbolicName);
             if (bundle == null)
             {
                 throw new Exception(string.Format("Bundle {0} doesn't exists.", symbolicName));

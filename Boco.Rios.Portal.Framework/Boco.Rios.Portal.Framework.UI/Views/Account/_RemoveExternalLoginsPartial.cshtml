@@ -5,7 +5,7 @@
     <h3>已注册外部登录</h3>
     <table>
         <tbody>
-        @foreach (Boco.Rios.Portal.Framework.UI.Models.ExternalLogin externalLogin in Model)
+        @foreach (var externalLogin in Model)
         {
             <tr>
                 <td>@externalLogin.ProviderDisplayName</td>
@@ -18,7 +18,7 @@
                             <fieldset>
                                 @Html.Hidden("provider", externalLogin.Provider)
                                 @Html.Hidden("providerUserId", externalLogin.ProviderUserId)
-                                <input type="submit" value="删除" title="从你的帐户中删除此 @externalLogin.ProviderDisplayName 凭据" />
+                                <input type="submit" value="删除" title="从你的帐户中删除此 @externalLogin.ProviderDisplayName 凭据"/>
                             </fieldset>
                         }
                     }

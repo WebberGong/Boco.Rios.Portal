@@ -8,7 +8,7 @@
         <button id="btnQuery1" class="k-button" type="button">真分页查询</button>
         <div id="grid1"></div>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function() {
                 var url = homePageServiceBaseUrl + 'api/json/reply/CellPagingRequest';
                 var dataSource = new kendo.data.DataSource({
                     transport: {
@@ -17,7 +17,7 @@
                             url: url,
                             dataType: "jsonp"
                         },
-                        parameterMap: function (options, operation) {
+                        parameterMap: function(options, operation) {
                             if (operation == "read") {
                                 var parameter = {
                                     Name: "cell",
@@ -34,10 +34,10 @@
                     batch: true,
                     pageSize: 20,
                     schema: {
-                        data: function (result) {
+                        data: function(result) {
                             return result.Data;
                         },
-                        total: function (result) {
+                        total: function(result) {
                             return result.TotalCount;
                         }
                     },
@@ -73,15 +73,15 @@
                 });
             });
 
-            $("#btnQuery1").click(function () {
+            $("#btnQuery1").click(function() {
                 $("#grid1").data("kendoGrid").dataSource.read();
             });
         </script>
-        
+
         <button id="btnQuery2" class="k-button" type="button">假分页查询</button>
         <div id="grid2"></div>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function() {
                 var url = homePageServiceBaseUrl + 'api/json/reply/CellRequest';
                 var param = { Name: "cell", Lac: 1, Ci: 2 };
                 var dataSource = new kendo.data.DataSource({
@@ -96,10 +96,10 @@
                     },
                     pageSize: 20,
                     schema: {
-                        data: function (result) {
+                        data: function(result) {
                             return result.Data;
                         },
-                        total: function (result) {
+                        total: function(result) {
                             return result.TotalCount;
                         }
                     },
@@ -134,7 +134,7 @@
                 });
             });
 
-            $("#btnQuery2").click(function () {
+            $("#btnQuery2").click(function() {
                 $("#grid2").data("kendoGrid").dataSource.read();
             });
         </script>

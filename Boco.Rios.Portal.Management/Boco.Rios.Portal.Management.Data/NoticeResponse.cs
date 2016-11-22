@@ -1,8 +1,5 @@
-﻿using Boco.Rios.Portal.Management.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Boco.Rios.Portal.Management.Entity;
 using ServiceStack.ServiceInterface.ServiceModel;
 
 namespace Boco.Rios.Portal.Management.Data
