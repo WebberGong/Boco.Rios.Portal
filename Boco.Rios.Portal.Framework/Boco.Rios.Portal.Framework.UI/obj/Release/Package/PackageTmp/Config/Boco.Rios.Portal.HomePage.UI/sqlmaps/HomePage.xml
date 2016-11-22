@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--定义一个sqlMap映射，可以有多个-->
+<sqlMap namespace ="Boco.Rios.Portal.HomePage" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--定义别名-->
+  <alias>
+    <typeAlias alias="Cell" type="Boco.Rios.Portal.HomePage.Entity.Cell,Boco.Rios.Portal.HomePage.Entity"/>
+  </alias>
+
+  <!--定义结果映射-->
+  <resultMaps>
+    <resultMap id="CellResult" class="Cell">
+      <result column="INT_ID" property="IntId"/>
+      <result column="NAME" property="Name"/>
+      <result column="LAC" property="Lac"/>
+      <result column="CI" property="Ci"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <sql id="GetCellsByCondition">
+      select * from cell where rownum &lt; 1001
+    </sql>
+    <select id="GetCellsByCondition" resultMap="CellResult">
+      <include refid="GetCellsByCondition"/>
+    </select>
+    <select id="GetCellsByConditionForPaging" resultMap="CellResult">
+      select * from
+      (select rownum as 序号, x.*  from (
+      <include refid="GetCellsByCondition"/>
+      ) x
+      where rownum &lt;= $Page$ * $PageSize$)
+      where 序号 >= ($Page$ - 1) * $PageSize$ + 1
+    </select>
+    <select id="GetCellsByConditionForCount" resultMap="CellResult">
+      select count(*) from (
+      <include refid="GetCellsByCondition"/>
+      )
+    </select>
+  </statements>
+</sqlMap>

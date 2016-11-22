@@ -1,0 +1,5 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\bin\Release\UIShell.Extension.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\bin\Release\UIShell.Extension.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\bin\Release\UIShell.OSGi.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\obj\Release\UIShell.Extension.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\obj\Release\UIShell.Extension.pdb

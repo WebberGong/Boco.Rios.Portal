@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Bundle xmlns="urn:uiosp-bundle-manifest-2.0" Name="Boco.Rios.Portal.Management.UI" SymbolicName="Boco.Rios.Portal.Management.UI" Version="1.0.0.0" InitializedState="Active">
+  <Activator Type="Boco.Rios.Portal.Management.UI.Activator" Policy="Immediate" />
+  <Runtime>
+    <Assembly Path="bin\Boco.Rios.Portal.Management.UI.dll" Share="false" />
+  </Runtime>
+
+  <Extension Point="MainMenu">
+    <Item url="/Management/NoticeManagement?plugin=Boco.Rios.Portal.Management.UI" text="公告管理" order="3"/>
+  </Extension>
+</Bundle>

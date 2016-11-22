@@ -1,0 +1,324 @@
+﻿@{
+    ViewBag.Title = "公告管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    公告管理</h2>
+<script id="queryTemplate" type="text/x-kendo-template">
+    <div id="queryCondition" style="margin-left: 8px; margin-right: 15px">
+        <label style="float:left; margin-top: 8px">标题：</label>
+        <input id="inputTitle" type="text" class="k-textbox" style="float:left; margin-right: 20px; margin-top: 2px"/>
+        <label style="float:left; margin-top: 8px">内容：</label>
+        <input id="intputContent" type="text" class="k-textbox" style="float:left; margin-right: 20px; margin-top: 2px"/>
+        <button class="k-button" type="button" style="float:right; margin-top: 2px" onclick="batchDeleteNotice()"><span class="k-icon k-delete" style="margin-bottom: 2px"></span>&nbsp;删除选中&nbsp;</button>
+        <button class="k-button" type="button" style="float:right; margin-top: 2px" onclick="createNotice()"><span class="k-icon k-add" style="margin-bottom: 2px"></span>&nbsp;添加&nbsp;</button>
+        <button class="k-button" type="button" style="float:right; margin-top: 2px" onclick="queryNotice()"><span class="k-icon k-i-search" style="margin-bottom: 2px"></span>&nbsp;查询&nbsp;</button>
+    </div>
+</script>
+<div id="dataContent" class="k-content">
+    <div id="gridNotice">
+    </div>
+    <script type="text/javascript">
+        function batchDeleteNotice() {
+            var grid = $("#gridNotice").data("kendoGrid");
+            var view = grid.dataSource.view();
+            var removedIdArr = new Array();
+            for (var i = 0, j = 0, len = view.length; i < len; i++) {
+                if (view[i].Selected) {
+                    removedIdArr[j] = view[i].Id;
+                    j++;
+                }
+            }
+            var url = managementServiceBaseUrl + 'api/json/reply/BatchDeleteNoticeRequest';
+            $.ajax({
+                type: "post",
+                dataType: "jsonp",
+                async: false,
+                url: url,
+                data: { ids: kendo.stringify(removedIdArr) },
+                success: function () {
+                    for (var k = 0; k < removedIdArr.length; k++) {
+                        grid.dataSource.remove(grid.dataSource.get(removedIdArr[k]));
+                    }
+                }
+            });
+        };
+        function createNotice() {
+            var grid = $("#gridNotice").data("kendoGrid");
+            grid.addRow();
+        };
+        function queryNotice() {
+            var data = $("#gridNotice").data("kendoGrid").dataSource;
+            data.read();
+        };
+        function setNoticeChecked(checked) {
+            var grid = $("#gridNotice").data("kendoGrid");
+            grid.select("tr:eq(id)");
+            var row = grid.select();
+            var data = grid.dataItem(row);
+            data.Selected = checked;
+        };
+        function setAllNoticeChecked(checked) {
+            var grid = $("#gridNotice").data("kendoGrid");
+            var view = grid.dataSource.view();
+            for (var i = 0, len = view.length; i < len; i++) {
+                view[i].Selected = checked;
+            }
+            grid.refresh();
+        };
+        $(document).ready(function () {
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "post",
+                        url: managementServiceBaseUrl + 'api/json/reply/GetNoticeByConditionRequest',
+                        dataType: "jsonp"
+                    },
+                    update: {
+                        type: "post",
+                        url: managementServiceBaseUrl + 'api/json/reply/UpdateNoticeRequest',
+                        dataType: "jsonp"
+                    },
+                    create: {
+                        type: "post",
+                        url: managementServiceBaseUrl + 'api/json/reply/InsertNoticeRequest',
+                        dataType: "jsonp"
+                    },
+                    destroy: {
+                        type: "post",
+                        url: managementServiceBaseUrl + 'api/json/reply/DeleteNoticeRequest',
+                        dataType: "jsonp"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation == "read") {
+                            var parameter = {
+                                Title: $('#inputTitle').val(),
+                                Content: $('#intputContent').val(),
+                                Page: options.page,
+                                PageSize: options.pageSize
+                            };
+                            $("#checkAllNotice").attr("checked", false);
+                            return parameter;
+                        }
+                        if ((operation == "create" || operation == "update" || operation == "destroy") && options.models[0]) {
+                            return options.models[0];
+                        }
+                        return null;
+                    }
+                },
+                batch: true,
+                pageSize: 20,
+                schema: {
+                    data: function (result) {
+                        return result.Data;
+                    },
+                    total: function (result) {
+                        return result.TotalCount;
+                    },
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Selected: { type: "boolean", editable: true, defaultValue: false },
+                            Id: { type: "string", editable: false, nullable: true, defaultValue: null },
+                            Title: { type: "string", editable: true, defaultValue: "" },
+                            Content: { type: "string", editable: true, defaultValue: "" },
+                            StartValidTime: { type: "time", editable: true, defaultValue: new Date() },
+                            EndValidTime: { type: "time", editable: true, defaultValue: new Date() },
+                            ReleaseTime: { type: "time", editable: false, defaultValue: new Date() },
+                            ReleaseUserId: { type: "string", editable: false, defaultValue: "" },
+                            ReleaseState: { type: "boolean", editable: true, defaultValue: false },
+                            CreateTime: { type: "time", editable: false, defaultValue: new Date() },
+                            CreateUserId: { type: "string", editable: false, defaultValue: "" }
+                        }
+                    }
+                },
+                serverPaging: true,
+                serverFiltering: false,
+                serverSorting: false
+            });
+
+            $("#gridNotice").kendoGrid({
+                dataSource: dataSource,
+                sortable: false,
+                scrollable: false,
+                autoBind: true,
+                navigatable: true,
+                selectable: "row",
+                pageable: {
+                    refresh: true,
+                    pageSizes: false,
+                    buttonCount: 10,
+                    messages: {
+                        display: "{0} - {1} 共 {2} 条数据",
+                        empty: "没有要显示的数据",
+                        first: "首页",
+                        previous: "上一页",
+                        next: "下一页",
+                        last: "末页",
+                        refresh: "刷新"
+                    }
+                },
+                columns: [
+                    { field: "Id", title: "编号", hidden: true },
+                    { field: "Title", title: "标题" },
+                    { field: "Content", title: "内容", hidden: true },
+                    { field: "StartValidTime", title: "开始生效时间", format: "{0:yyyy-MM-dd HH:mm:ss}" },
+                    { field: "EndValidTime", title: "结束生效时间", format: "{0:yyyy-MM-dd HH:mm:ss}" },
+                    { field: "ReleaseTime", title: "发布时间", format: "{0:yyyy-MM-dd HH:mm:ss}" },
+                    { field: "ReleaseUserId", title: "发布人" },
+                    { field: "CreateTime", title: "创建时间", format: "{0:yyyy-MM-dd HH:mm:ss}" },
+                    { field: "CreateUserId", title: "创建人" },
+                    {
+                        field: "ReleaseState", title: "是否发布", editable: false,
+                        template: function (dataItem) {
+                            if (dataItem.ReleaseState) {
+                                return '<img src="../../Images/right.png" style="width: 20px; height: 20px; margin-left: 20px"/>';
+                            } else {
+                                return '<img src="../../Images/wrong.png" style="width: 15px; height: 15px; margin-left: 20px"/>'; ;
+                            }
+                        }
+                    },
+                    {
+                        field: "Selected",
+                        headerTemplate: '<div>' +
+                            '<div style="float: left; width: 30%">' +
+                            '<input class="k-checkbox" type="checkbox" id="checkAllNotice" onchange="setAllNoticeChecked(this.checked)" />' +
+                            '</div>' +
+                            '<div style="float: left; width: 70%; margin-top: 3px">' +
+                            '<label>全选</label>' +
+                            '</div>' +
+                            '</div>',
+                        template: function (dataItem) {
+                            var checked = dataItem.Selected ? " checked=\"checked\"" : "";
+                            return '<input class="k-checkbox" type="checkbox" style="margin-left: 20px; margin-top: 3px" onchange="setNoticeChecked(this.checked)"' + checked + '/>';
+                        }
+                    },
+                    {
+                        command: [
+                            {
+                                name: "edit",
+                                text: { edit: "编辑", cancel: "取消", update: "保存" }
+                            },
+                            {
+                                name: "destroy",
+                                text: "删除"
+                            }
+                        ],
+                        title: "",
+                        width: "160px"
+                    }
+                ],
+                editable: {
+                    mode: "popup",
+                    window: {
+                        title: "编辑",
+                        animation: false,
+                        open: myOpenEventHandler,
+                        modal: true
+                    },
+                    confirmation: "确定要删除该条记录吗？",
+                    template: kendo.template($("#editorTemplate").html())
+                },
+                toolbar: [
+                    { template: kendo.template($("#queryTemplate").html()) }
+                ],
+                edit: function (e) {
+                    if (e.model.isNew()) {
+                        e.model.Id = kendo.guid();
+                    };
+                    e.model.Content = htmlDecode(e.model.Content);
+                    e.container.find("textarea[id=content]").data("kendoEditor").value(e.model.Content);
+                    var title = e.container.find("input[id=title]");
+                    title.focus();
+                    title.select();
+                },
+                save: function (e) {
+                    e.model.StartValidTime = dateTime_UtcToLocal(e.model.StartValidTime);
+                    e.model.EndValidTime = dateTime_UtcToLocal(e.model.EndValidTime);
+                    e.model.Content = htmlEncode(e.model.Content);
+                    if (e.model.ReleaseState) {
+                        e.model.ReleaseTime = dateTime_UtcToLocal(new Date());
+                    } else {
+                        e.model.ReleaseTime = null;
+                    }
+                    if (e.model.isNew()) {
+                        e.model.CreateTime = dateTime_UtcToLocal(new Date());
+                    };
+                }
+            });
+        });
+        function myOpenEventHandler() {
+            $("#content").kendoEditor({
+                tools: [
+                    "bold",
+                    "italic",
+                    "underline",
+                    "strikethrough",
+                    "justifyLeft",
+                    "justifyCenter",
+                    "justifyRight",
+                    "justifyFull",
+                    "createLink",
+                    "unlink",
+                    "insertImage",
+                    "foreColor",
+                    "backColor"
+                ]
+            });
+            $("#startValidTime").kendoDateTimePicker({
+                format: "yyyy-MM-dd HH:mm:ss",
+                culture: "zh-CN"
+            });
+            $("#endValidTime").kendoDateTimePicker({
+                format: "yyyy-MM-dd HH:mm:ss",
+                culture: "zh-CN"
+            });
+        };
+    </script>
+    <script id="editorTemplate" type="text/x-kendo-template">
+        <div id="editorWindow" style="margin-left: 20px; margin-top: -10px" data-role="validator" novalidate="novalidate">
+            <table>
+                <tr>
+                    <td style="width: 120px">
+                        <label>标题：</label>
+                    </td>
+                    <td>
+                        <input id="title" name="标题" class="k-textbox" type="text" data-bind="value: Title" style="width: 200px" required="required"/>
+                        <span data-for='标题' class='k-invalid-msg'></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>开始生效时间：</label>
+                    </td>
+                    <td>
+                        <input id="startValidTime" name="开始生效时间" type="datetime" data-bind="value: StartValidTime" style="width: 200px" required="required"/>
+                        <span data-for='开始生效时间' class='k-invalid-msg'></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>结束生效时间：</label>
+                    </td>
+                    <td>
+                        <input id="endValidTime" name="结束生效时间" type="datetime" data-bind="value: EndValidTime" style="width: 200px" required="required"/>
+                        <span data-for='结束生效时间' class='k-invalid-msg'></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>发布状态：</label>
+                    </td>
+                    <td>
+                        <input id="releaseState" class="k-checkbox" type="checkbox" data-bind="checked: ReleaseState" style="margin-top: 5px"/>
+                        是否发布
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <textarea id="content" name="内容" data-bind="value: Content" style="width: 360px; height: 200px" required="required"></textarea>
+                <span data-for='内容' class='k-invalid-msg'></span>
+            </div>
+        </div>
+    </script>
+</div>

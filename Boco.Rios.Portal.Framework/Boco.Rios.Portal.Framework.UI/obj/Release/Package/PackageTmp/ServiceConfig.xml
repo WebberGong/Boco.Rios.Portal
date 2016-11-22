@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ServiceConfigs>
+  <ServiceConfig>
+    <ServiceName>HomePageService</ServiceName>
+    <Url>http://localhost:3410/</Url>
+  </ServiceConfig>
+  <ServiceConfig>
+    <ServiceName>ReportService</ServiceName>
+    <Url>http://localhost:3410/</Url>
+  </ServiceConfig>
+</ServiceConfigs>

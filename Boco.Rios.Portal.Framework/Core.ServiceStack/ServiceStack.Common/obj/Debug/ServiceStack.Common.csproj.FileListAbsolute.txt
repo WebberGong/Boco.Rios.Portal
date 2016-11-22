@@ -1,0 +1,8 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\bin\Debug\ServiceStack.Common.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\bin\Debug\ServiceStack.Common.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\bin\Debug\ServiceStack.Interfaces.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\bin\Debug\ServiceStack.Text.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\bin\Debug\ServiceStack.Interfaces.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\obj\Debug\ServiceStack.Common.csprojResolveAssemblyReference.cache
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\obj\Debug\ServiceStack.Common.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Common\obj\Debug\ServiceStack.Common.pdb

@@ -1,0 +1,15 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.ServiceInterface.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.ServiceInterface.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.Common.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.Interfaces.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.OrmLite.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.Text.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.Common.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.Interfaces.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\bin\Debug\ServiceStack.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\obj\Debug\ServiceStack.ServiceInterface.csprojResolveAssemblyReference.cache
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\obj\Debug\ServiceStack.ServiceInterface.FluentValidation.Resources.Messages.resources
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\obj\Debug\ServiceStack.ServiceInterface.csproj.GenerateResource.Cache
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\obj\Debug\ServiceStack.ServiceInterface.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.ServiceInterface\obj\Debug\ServiceStack.ServiceInterface.pdb

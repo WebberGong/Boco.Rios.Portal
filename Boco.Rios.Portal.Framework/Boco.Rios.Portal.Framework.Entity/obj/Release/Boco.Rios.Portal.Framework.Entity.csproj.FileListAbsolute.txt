@@ -1,0 +1,4 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\bin\Release\Boco.Rios.Portal.Framework.Entity.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\bin\Release\Boco.Rios.Portal.Framework.Entity.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\obj\Release\Boco.Rios.Portal.Framework.Entity.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\obj\Release\Boco.Rios.Portal.Framework.Entity.pdb

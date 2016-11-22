@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div id="kendoui" class="k-content">
+        <button id="btnQuery1" class="k-button" type="button">查询</button>
+        <div id="grid1" style="font-size: 0.85em"></div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var url = reportServiceBaseUrl + 'api/json/reply/ReportRequest';
+                var param = { Name: "gong" };
+                var dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            type: "post",
+                            dataType: "jsonp",
+                            async: true,
+                            url: url,
+                            data: param
+                        }
+                    },
+                    pageSize: 20,
+                    schema: {
+                        data: function (result) {
+                            return result.Data;
+                        },
+                        total: function (result) {
+                            return result.TotalCount;
+                        }
+                    },
+                    serverPaging: false,
+                    serverFiltering: false,
+                    serverSorting: false
+                });
+                $("#grid1").kendoGrid({
+                    dataSource: dataSource,
+                    sortable: true,
+                    scrollable: false,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: false,
+                        buttonCount: 10,
+                        messages: {
+                            display: "{0} - {1} 共 {2} 条数据",
+                            empty: "没有要显示的数据",
+                            first: "首页",
+                            previous: "上一页",
+                            next: "下一页",
+                            last: "末页",
+                            refresh: "刷新"
+                        }
+                    },
+                    columns: [
+                        { field: "Name", title: "名称" }
+                    ]
+                });
+            });
+
+            $("#btnQuery1").click(function () {
+                $("#grid1").data("kendoGrid").dataSource.read();
+            });
+        </script>
+    </div>
+</div>

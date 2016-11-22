@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--定义一个sqlMap映射，可以有多个-->
+<sqlMap namespace="Boco.Rios.Portal.Management" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--定义别名-->
+  <alias>
+    <typeAlias alias="Notice" type="Boco.Rios.Portal.Management.Entity.Notice,Boco.Rios.Portal.Management.Entity"/>
+  </alias>
+
+  <!--定义结果映射-->
+  <resultMaps>
+    <resultMap id="NoticeResult" class="Notice">
+      <result column="ID" property="Id"/>
+      <result column="TITLE" property="Title"/>
+      <result column="CONTENT" property="Content"/>
+      <result column="START_VALID_TIME" property="StartValidTime"/>
+      <result column="END_VALID_TIME" property="EndValidTime"/>
+      <result column="RELEASE_TIME" property="ReleaseTime"/>
+      <result column="RELEASE_USER_ID" property="ReleaseUserId"/>
+      <result column="RELEASE_STATE" property="ReleaseState"/>
+      <result column="CREATE_TIME" property="CreateTime"/>
+      <result column="CREATE_USER_ID" property="CreateUserId"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <select id="GetNoticeByCondition" resultMap="NoticeResult">
+      SELECT
+      ID,
+      TITLE,
+      CONTENT,
+      TO_CHAR(START_VALID_TIME,'yyyy-MM-dd hh24:mi:ss') AS START_VALID_TIME,
+      TO_CHAR(END_VALID_TIME,'yyyy-MM-dd hh24:mi:ss') AS END_VALID_TIME,
+      TO_CHAR(RELEASE_TIME,'yyyy-MM-dd hh24:mi:ss') AS RELEASE_TIME,
+      RELEASE_USER_ID,
+      RELEASE_STATE,
+      TO_CHAR(CREATE_TIME,'yyyy-MM-dd hh24:mi:ss') AS CREATE_TIME,
+      CREATE_USER_ID
+      FROM PORTAL_NOTICE
+      WHERE 1=1
+      <isNotNull property="Title">
+        <isNotEmpty property="Title">
+          AND TITLE LIKE '%$Title$%'
+        </isNotEmpty>
+      </isNotNull>
+      <isNotNull property="Content">
+        <isNotEmpty property="Content">
+          AND CONTENT LIKE '%$Content$%'
+        </isNotEmpty>
+      </isNotNull>
+    </select>
+    <select id="GetLatestNotice" resultMap="NoticeResult">
+      SELECT * FROM
+      (
+      SELECT
+      ID,
+      TITLE,
+      CONTENT,
+      TO_CHAR(START_VALID_TIME,'yyyy-MM-dd hh24:mi:ss') AS START_VALID_TIME,
+      TO_CHAR(END_VALID_TIME,'yyyy-MM-dd hh24:mi:ss') AS END_VALID_TIME,
+      TO_CHAR(RELEASE_TIME,'yyyy-MM-dd hh24:mi:ss') AS RELEASE_TIME,
+      RELEASE_USER_ID,
+      RELEASE_STATE,
+      TO_CHAR(CREATE_TIME,'yyyy-MM-dd hh24:mi:ss') AS CREATE_TIME,
+      CREATE_USER_ID
+      FROM PORTAL_NOTICE
+      WHERE RELEASE_STATE = 1
+      ORDER BY RELEASE_TIME DESC
+      )
+      WHERE ROWNUM &lt;= '$value$'
+    </select>
+    <select id="GetNoticeById" resultMap="NoticeResult">
+      SELECT
+      ID,
+      TITLE,
+      CONTENT,
+      TO_CHAR(START_VALID_TIME,'yyyy-MM-dd hh24:mi:ss') AS START_VALID_TIME,
+      TO_CHAR(END_VALID_TIME,'yyyy-MM-dd hh24:mi:ss') AS END_VALID_TIME,
+      TO_CHAR(RELEASE_TIME,'yyyy-MM-dd hh24:mi:ss') AS RELEASE_TIME,
+      RELEASE_USER_ID,
+      RELEASE_STATE,
+      TO_CHAR(CREATE_TIME,'yyyy-MM-dd hh24:mi:ss') AS CREATE_TIME,
+      CREATE_USER_ID
+      FROM PORTAL_NOTICE
+      WHERE ID = '$value$'
+    </select>
+    <insert id="InsertNotice" parameterClass="Notice">
+      INSERT INTO PORTAL_NOTICE
+      (
+      ID,
+      TITLE,
+      CONTENT,
+      START_VALID_TIME,
+      END_VALID_TIME,
+      RELEASE_TIME,
+      RELEASE_USER_ID,
+      RELEASE_STATE,
+      CREATE_TIME,
+      CREATE_USER_ID
+      )
+      VALUES
+      (
+      '$Id$',
+      '$Title$',
+      '$Content$',
+      TO_DATE('$StartValidTime$','yyyy-MM-dd hh24:mi:ss'),
+      TO_DATE('$EndValidTime$','yyyy-MM-dd hh24:mi:ss'),
+      <isEqual property="ReleaseState" compareValue="true">
+        SYSDATE,
+      </isEqual>
+      <isNotEqual property="ReleaseState" compareValue="true">
+        NULL,
+      </isNotEqual>
+      '$ReleaseUserId$',
+      <isEqual property="ReleaseState" compareValue="true">
+        1,
+      </isEqual>
+      <isNotEqual property="ReleaseState" compareValue="true">
+        0,
+      </isNotEqual>
+      SYSDATE,
+      '$CreateUserId$'
+      )
+    </insert>
+    <update id="UpdateNotice" parameterClass="Notice">
+      UPDATE PORTAL_NOTICE SET
+      TITLE = '$Title$',
+      CONTENT = '$Content$',
+      START_VALID_TIME = TO_DATE('$StartValidTime$','yyyy-MM-dd hh24:mi:ss'),
+      END_VALID_TIME = TO_DATE('$EndValidTime$','yyyy-MM-dd hh24:mi:ss'),
+      <isEqual property="ReleaseState" compareValue="true">
+        RELEASE_TIME = SYSDATE,
+      </isEqual>
+      <isNotEqual property="ReleaseState" compareValue="true">
+        RELEASE_TIME = NULL,
+      </isNotEqual>
+      RELEASE_USER_ID = '$ReleaseUserId$',
+      <isEqual property="ReleaseState" compareValue="true">
+        RELEASE_STATE = 1
+      </isEqual>
+      <isNotEqual property="ReleaseState" compareValue="true">
+        RELEASE_STATE = 0
+      </isNotEqual>
+      WHERE
+      ID = '$Id$'
+    </update>
+    <delete id="DeleteNotice" parameterClass="Notice">
+      DELETE FROM PORTAL_NOTICE WHERE ID = '$Id$'
+    </delete>
+  </statements>
+</sqlMap>

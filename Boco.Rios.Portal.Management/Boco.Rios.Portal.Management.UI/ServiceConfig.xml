@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ServiceConfigs>
+  <ServiceConfig>
+    <ServiceName>ManagementService</ServiceName>
+    <Url>http://localhost:3403/</Url>
+  </ServiceConfig>
+</ServiceConfigs>

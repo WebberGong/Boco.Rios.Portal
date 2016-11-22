@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="notice" class="k-content" style="vertical-align: middle; font-size: 0.85em">
+    <div id="divLeft" style="float: left;">
+        <input id="inputType" placeholder="选择类型..." />
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#inputType").kendoComboBox({
+                    placeholder: "选择类型...",
+                    dataTextField: "Name",
+                    dataValueField: "Value",
+                    filter: "contains",
+                    suggest: true,
+                    dataSource: {
+                        type: "jsonp",
+                        serverFiltering: false,
+                        transport: {
+                            read: {
+                                type: "post",
+                                url: homePageServiceBaseUrl + "api/json/reply/NetworkTypeRequest",
+                                dataType: "jsonp"
+                            }
+                        },
+                        schema: {
+                            data: function (result) {
+                                return result.Data;
+                            },
+                            total: function (result) {
+                                return result.TotalCount;
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+        <div id="treeview">
+        </div>
+        <script type="text/javascript">
+            var dataSource = new kendo.data.HierarchicalDataSource({
+                transport: {
+                    read: {
+                        type: "post",
+                        url: homePageServiceBaseUrl + "api/json/reply/TreeNodeRequest",
+                        dataType: "jsonp"
+                    }
+                },
+                schema: {
+                    data: function (result) {
+                        return result.Data;
+                    },
+                    total: function (result) {
+                        return result.TotalCount;
+                    },
+                    model: {
+                        id: "Id",
+                        children: "ChildNodes"
+                    }
+                }
+            });
+
+            $("#treeview").kendoTreeView({
+                dataSource: dataSource,
+                dataTextField: "Name"
+            });
+        </script>
+    </div>
+    <div id="divRight" style="vertical-align: middle; float: right;">
+        <div id="divRight3" style="float: left;">
+            <a href="http://www.baidu.com">redirect to baidu</a>
+        </div>
+    </div>
+</div>

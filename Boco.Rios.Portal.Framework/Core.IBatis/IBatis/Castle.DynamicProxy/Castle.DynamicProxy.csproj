@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.3077</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5DDE20E8-2335-4C62-A8A2-177380C78467}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>Castle.DynamicProxy</AssemblyName>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Castle.DynamicProxy</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssertUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\AbstractCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\AbstractEasyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\ConstructorCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\ConstructorCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyCallable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyConstructor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyDefaultConstructor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyNested.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyRuntimeConstructor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyRuntimeMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EasyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\EventsCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\IEasyMember.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\MethodCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\MethodCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\NestedTypeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\PropertiesCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\AddressOfReferenceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ArgumentReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\AssignArrayStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\AssignStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\BinaryExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ConditionExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ConstructorInvocationExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ConvertExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\Expression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ExpressionStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\FieldReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\FixedReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\GotoStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\IEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\IndirectReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\LabelReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\LoadRefArrayElementExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\LocalReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\LockBlockExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\MarkBranchStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\MethodInvocationExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\MethodPointerExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\MethodTokenExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\NewArrayExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\NewInstanceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\NopStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\NullExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\PopValueFromStackStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\Reference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ReferenceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ReferencesToObjectArrayExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ReturnReferenceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\ReturnStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\SelfReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\Statement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\TypeReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\TypeTokenExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\SimpleAST\VirtualMethodInvocationExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\Utils\ArgumentsUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\Utils\LdcOpCodesDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\Utils\LdindOpCodesDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\Utils\OpCodeUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeBuilder\Utils\StindOpCodesDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeGenerators\BaseCodeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeGenerators\CallableField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeGenerators\ClassProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeGenerators\InterfaceProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeGenerators\ModuleScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeGenerators\ProxyGenerationException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\CodeGenerators\Set.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\DefaultProxyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\IProxyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GeneratorContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICallable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IInterceptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Invocation\AbstractInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Invocation\InterfaceInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Invocation\SameClassInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Serialization\ProxyObjectReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StandardInterceptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Global.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(ProjectDir)..\..\..\..\External-Lib" /y</PostBuildEvent>
+  </PropertyGroup>
+</Project>

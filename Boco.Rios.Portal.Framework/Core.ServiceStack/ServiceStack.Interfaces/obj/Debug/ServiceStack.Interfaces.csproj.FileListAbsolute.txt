@@ -1,0 +1,4 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Interfaces\bin\Debug\ServiceStack.Interfaces.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Interfaces\bin\Debug\ServiceStack.Interfaces.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Interfaces\obj\Debug\ServiceStack.Interfaces.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Interfaces\obj\Debug\ServiceStack.Interfaces.pdb

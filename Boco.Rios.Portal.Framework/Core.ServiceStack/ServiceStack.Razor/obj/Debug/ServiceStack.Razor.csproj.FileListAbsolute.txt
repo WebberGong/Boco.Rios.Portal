@@ -1,0 +1,16 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.Razor.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.Razor.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.Common.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.Interfaces.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.ServiceInterface.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.Text.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\System.Web.Razor.Unofficial.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.OrmLite.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.Common.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.Interfaces.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.ServiceInterface.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\bin\Debug\ServiceStack.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\obj\Debug\ServiceStack.Razor.csprojResolveAssemblyReference.cache
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\obj\Debug\ServiceStack.Razor.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.ServiceStack\ServiceStack.Razor\obj\Debug\ServiceStack.Razor.pdb

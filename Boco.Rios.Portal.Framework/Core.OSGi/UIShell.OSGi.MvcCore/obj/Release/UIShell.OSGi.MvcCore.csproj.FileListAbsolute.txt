@@ -1,0 +1,4 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\bin\Release\UIShell.OSGi.MvcCore.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\bin\Release\UIShell.OSGi.MvcCore.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\obj\Release\UIShell.OSGi.MvcCore.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\obj\Release\UIShell.OSGi.MvcCore.pdb

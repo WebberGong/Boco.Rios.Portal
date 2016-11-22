@@ -1,0 +1,10 @@
+﻿1.插件UI项目拷贝到宿主的命令
+del "$(ProjectDir)..\..\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.UI\Plugins\$(ProjectName)" /a /f /s /q
+del "$(ProjectDir)..\..\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.UI\Config\$(ProjectName)" /a /f /s /q
+xcopy "$(ProjectDir)Views" "$(ProjectDir)..\..\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.UI\Plugins\$(ProjectName)\Views" /s /e /y
+xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(ProjectDir)..\..\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.UI\Plugins\$(ProjectName)\bin" /y
+xcopy "$(ProjectDir)Manifest.xml" "$(ProjectDir)..\..\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.UI\Plugins\$(ProjectName)" /y
+xcopy "$(ProjectDir)Config\$(ProjectName)" "$(ProjectDir)..\..\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.UI\Config\$(ProjectName)" /s /e /y
+
+2.插件其他项目拷贝到宿主的命令
+xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(ProjectDir)..\..\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.UI\bin" /y

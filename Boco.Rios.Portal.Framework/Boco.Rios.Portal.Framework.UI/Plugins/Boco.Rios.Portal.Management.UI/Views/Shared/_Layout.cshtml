@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>系统管理</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+    <!--KendoUI声明区域-->
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/kendo/2013.3.1324/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/kendo/2013.3.1324/kendo.all.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/kendo/kendo.culture.zh-CN.js")"></script>
+    <script type="text/javascript" src="~/Scripts/custom-common.js"></script>
+    <script type="text/javascript">
+        kendo.culture("zh-CN");
+        var managementServiceBaseUrl = '@Boco.Rios.Portal.Management.UI.AppHost.ServiceUrl["ManagementService"]';
+    </script>
+</head>
+<body>
+    <div id="top">
+        <div id="logo">
+        </div>
+        <div id="login">
+            <div style="float: right; margin-top: 10px; margin-right: 50px">
+                登录用户：admin &nbsp;&nbsp; 退出系统
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div class="menu_bg_l">
+            <img src="~/Images/top_menu_l.gif" alt="" width="16" height="31" /></div>
+        <div class="menu_bg_r">
+            <ul>
+                <li>@Html.ActionLink("公告管理", "NoticeManagement", "Management")</li>
+            </ul>
+        </div>
+    </div>
+    <div id="main">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <div id="bottom">
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>
+                    北京亿阳信通股份有限公司 版权所有 2014-2020</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

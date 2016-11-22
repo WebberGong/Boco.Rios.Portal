@@ -1,0 +1,10 @@
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\bin\Manifest.xml
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\bin\UIShell.IoCPlugin.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\bin\UIShell.IoCPlugin.pdb
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\bin\Autofac.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\bin\Autofac.Integration.Mvc.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\bin\UIShell.OSGi.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\bin\UIShell.OSGi.MvcCore.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\obj\Release\UIShell.IoCPlugin.csprojResolveAssemblyReference.cache
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\obj\Release\UIShell.IoCPlugin.dll
+E:\源码\Unicom3_BS\05-Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.IoCPlugin\obj\Release\UIShell.IoCPlugin.pdb

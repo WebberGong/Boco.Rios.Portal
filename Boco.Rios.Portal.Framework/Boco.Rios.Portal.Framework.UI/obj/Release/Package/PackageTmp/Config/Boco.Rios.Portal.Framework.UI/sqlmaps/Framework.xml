@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--定义一个sqlMap映射，可以有多个-->
+<sqlMap namespace ="Boco.Rios.Portal.Framework" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--定义别名-->
+  <alias>
+  </alias>
+
+  <!--定义结果映射-->
+  <resultMaps>
+  </resultMaps>
+
+  <statements>
+  </statements>
+</sqlMap>
