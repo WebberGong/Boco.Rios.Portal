@@ -3,5 +3,5 @@
 *.suo
 log.txt
 persistent.xml
-UIShell.IocPlugin.csproj.FileListAbsolute.txt
+*.csproj.FileListAbsolute.txt
 TestResults
