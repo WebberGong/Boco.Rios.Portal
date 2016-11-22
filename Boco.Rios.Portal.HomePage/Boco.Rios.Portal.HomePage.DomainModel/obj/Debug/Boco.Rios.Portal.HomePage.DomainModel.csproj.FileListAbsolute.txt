@@ -1,0 +1,14 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Boco.Rios.Portal.HomePage.DomainModel.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Boco.Rios.Portal.HomePage.DomainModel.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Boco.Rios.Framework.Persistence.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Boco.Rios.Portal.HomePage.Entity.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Boco.Rios.Portal.HomePage.Persistence.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\IBatisNet.DataMapper.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\IBatisNet.DataAccess.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\IBatisNet.Common.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Castle.DynamicProxy.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Boco.Rios.Portal.HomePage.Entity.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\bin\Debug\Boco.Rios.Portal.HomePage.Persistence.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\obj\Debug\Boco.Rios.Portal.HomePage.DomainModel.csprojResolveAssemblyReference.cache
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\obj\Debug\Boco.Rios.Portal.HomePage.DomainModel.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.HomePage\Boco.Rios.Portal.HomePage.DomainModel\obj\Debug\Boco.Rios.Portal.HomePage.DomainModel.pdb

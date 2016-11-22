@@ -1,0 +1,4 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Persistence\bin\Debug\Boco.Rios.Portal.Report.Persistence.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Persistence\bin\Debug\Boco.Rios.Portal.Report.Persistence.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Persistence\obj\Debug\Boco.Rios.Portal.Report.Persistence.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Persistence\obj\Debug\Boco.Rios.Portal.Report.Persistence.pdb

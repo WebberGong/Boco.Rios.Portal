@@ -1,0 +1,4 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\bin\Debug\Boco.Rios.Portal.Framework.Entity.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\bin\Debug\Boco.Rios.Portal.Framework.Entity.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\obj\Debug\Boco.Rios.Portal.Framework.Entity.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Boco.Rios.Portal.Framework.Entity\obj\Debug\Boco.Rios.Portal.Framework.Entity.pdb

@@ -1,0 +1,4 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\bin\Debug\UIShell.OSGi.MvcCore.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\bin\Debug\UIShell.OSGi.MvcCore.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\obj\Debug\UIShell.OSGi.MvcCore.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.OSGi.MvcCore\obj\Debug\UIShell.OSGi.MvcCore.pdb

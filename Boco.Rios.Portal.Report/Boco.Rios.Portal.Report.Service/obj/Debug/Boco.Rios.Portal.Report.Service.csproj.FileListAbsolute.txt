@@ -1,0 +1,16 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.Service.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.Service.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.Data.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.DomainModel.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.Entity.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\ServiceStack.Interfaces.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\ServiceStack.ServiceInterface.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\ServiceStack.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\ServiceStack.Text.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\ServiceStack.OrmLite.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.Data.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.DomainModel.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\bin\Debug\Boco.Rios.Portal.Report.Entity.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\obj\Debug\Boco.Rios.Portal.Report.Service.csprojResolveAssemblyReference.cache
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\obj\Debug\Boco.Rios.Portal.Report.Service.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Service\obj\Debug\Boco.Rios.Portal.Report.Service.pdb

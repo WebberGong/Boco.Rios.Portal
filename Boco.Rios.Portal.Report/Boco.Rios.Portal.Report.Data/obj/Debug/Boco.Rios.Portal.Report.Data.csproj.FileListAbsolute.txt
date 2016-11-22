@@ -1,0 +1,7 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Data\bin\Debug\Boco.Rios.Portal.Report.Data.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Data\bin\Debug\Boco.Rios.Portal.Report.Data.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Data\bin\Debug\Boco.Rios.Portal.Report.Entity.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Data\bin\Debug\Boco.Rios.Portal.Report.Entity.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Data\obj\Debug\Boco.Rios.Portal.Report.Data.csprojResolveAssemblyReference.cache
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Data\obj\Debug\Boco.Rios.Portal.Report.Data.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Report\Boco.Rios.Portal.Report.Data\obj\Debug\Boco.Rios.Portal.Report.Data.pdb

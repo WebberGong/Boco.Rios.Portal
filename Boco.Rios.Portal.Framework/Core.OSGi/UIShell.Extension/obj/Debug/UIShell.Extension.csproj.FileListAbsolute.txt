@@ -1,0 +1,5 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\bin\Debug\UIShell.Extension.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\bin\Debug\UIShell.Extension.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\bin\Debug\UIShell.OSGi.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\obj\Debug\UIShell.Extension.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.OSGi\UIShell.Extension\obj\Debug\UIShell.Extension.pdb

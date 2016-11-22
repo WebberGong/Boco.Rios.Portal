@@ -1,0 +1,14 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Boco.Rios.Portal.Management.DomainModel.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Boco.Rios.Portal.Management.DomainModel.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Boco.Rios.Framework.Persistence.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Boco.Rios.Portal.Management.Entity.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Boco.Rios.Portal.Management.Persistence.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\IBatisNet.DataAccess.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\IBatisNet.DataMapper.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\IBatisNet.Common.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Castle.DynamicProxy.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Boco.Rios.Portal.Management.Entity.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\bin\Debug\Boco.Rios.Portal.Management.Persistence.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\obj\Debug\Boco.Rios.Portal.Management.DomainModel.csprojResolveAssemblyReference.cache
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\obj\Debug\Boco.Rios.Portal.Management.DomainModel.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.DomainModel\obj\Debug\Boco.Rios.Portal.Management.DomainModel.pdb

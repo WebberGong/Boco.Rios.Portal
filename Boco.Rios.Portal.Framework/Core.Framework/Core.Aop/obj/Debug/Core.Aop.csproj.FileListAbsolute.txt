@@ -1,0 +1,4 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.Framework\Core.Aop\bin\Debug\Core.Aop.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.Framework\Core.Aop\bin\Debug\Core.Aop.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.Framework\Core.Aop\obj\Debug\Core.Aop.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Framework\Core.Framework\Core.Aop\obj\Debug\Core.Aop.pdb

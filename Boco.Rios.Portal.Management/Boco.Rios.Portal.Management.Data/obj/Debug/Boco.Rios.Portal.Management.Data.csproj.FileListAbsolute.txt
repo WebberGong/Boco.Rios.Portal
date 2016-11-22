@@ -1,0 +1,11 @@
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\Boco.Rios.Portal.Management.Data.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\Boco.Rios.Portal.Management.Data.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\Boco.Rios.Portal.Management.Entity.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\ServiceStack.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\ServiceStack.Interfaces.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\ServiceStack.Common.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\ServiceStack.Text.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\bin\Debug\Boco.Rios.Portal.Management.Entity.pdb
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\obj\Debug\Boco.Rios.Portal.Management.Data.csprojResolveAssemblyReference.cache
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\obj\Debug\Boco.Rios.Portal.Management.Data.dll
+D:\Source\Boco.Rios.Portal\Boco.Rios.Portal.Management\Boco.Rios.Portal.Management.Data\obj\Debug\Boco.Rios.Portal.Management.Data.pdb
