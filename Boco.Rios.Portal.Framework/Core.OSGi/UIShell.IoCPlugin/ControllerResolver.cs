@@ -1,12 +1,12 @@
 ﻿using System;
 using Autofac;
 using UIShell.OSGi;
-using UIShell.OSGi.Utility;
 using UIShell.OSGi.MvcCore;
+using UIShell.OSGi.Utility;
 
 namespace UIShell.IoCPlugin
 {
-    class ControllerResolver : IControllerResolver
+    internal class ControllerResolver : IControllerResolver
     {
         public object Resolve(Type type)
         {

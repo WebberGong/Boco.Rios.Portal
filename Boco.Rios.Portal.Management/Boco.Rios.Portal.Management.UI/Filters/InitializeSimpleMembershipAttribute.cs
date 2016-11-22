@@ -3,12 +3,12 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
-using WebMatrix.WebData;
 using Boco.Rios.Portal.Management.UI.Models;
+using WebMatrix.WebData;
 
 namespace Boco.Rios.Portal.Management.UI.Filters
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute
     {
         private static SimpleMembershipInitializer _initializer;
@@ -34,15 +34,18 @@ namespace Boco.Rios.Portal.Management.UI.Filters
                         if (!context.Database.Exists())
                         {
                             // Create the SimpleMembership database without Entity Framework migration schema
-                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
+                            ((IObjectContextAdapter) context).ObjectContext.CreateDatabase();
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName",
+                        true);
                 }
                 catch (Exception ex)
                 {
-                    throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
+                    throw new InvalidOperationException(
+                        "The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588",
+                        ex);
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace UIShell.IoCPlugin
         {
             //provide the container builder so that each plugin can register the dependancy when starting.
             var containerBuilder = new ContainerBuilder();
-            runtime.AddService(typeof(ContainerBuilder), containerBuilder);
+            runtime.AddService(typeof (ContainerBuilder), containerBuilder);
             return containerBuilder;
         }
 
@@ -26,7 +26,8 @@ namespace UIShell.IoCPlugin
 
             foreach (var assembly in assmblies)
             {
-                FileLogUtility.Debug(string.Format("Registering assembly:{0}({1}) to IoC container.", assembly.FullName, assembly.Location));
+                FileLogUtility.Debug(string.Format("Registering assembly:{0}({1}) to IoC container.", assembly.FullName,
+                    assembly.Location));
             }
             //ContainerBuilder is not thread safe。
             lock (containerBuilder)
@@ -39,7 +40,7 @@ namespace UIShell.IoCPlugin
                 }
                 else
                 {
-                    ContainerBuilder anotherBuilder = new ContainerBuilder();
+                    var anotherBuilder = new ContainerBuilder();
                     anotherBuilder.RegisterControllers(assmblies);
 
                     anotherBuilder.Update(container);
@@ -62,13 +63,16 @@ namespace UIShell.IoCPlugin
                 {
                     foreach (var assembly in assmblies)
                     {
-                        FileLogUtility.Error(string.Format("Can't unregister assembly:{0}({1}), because no IContainer service is avaliable.", assembly.FullName, assembly.Location));
+                        FileLogUtility.Error(
+                            string.Format(
+                                "Can't unregister assembly:{0}({1}), because no IContainer service is avaliable.",
+                                assembly.FullName, assembly.Location));
                     }
                     return;
                 }
                 var builder = new ContainerBuilder();
                 var components = container.ComponentRegistry.Registrations
-                                          .Where(cr => !assmblies.Contains(cr.Activator.LimitType.Assembly))
+                    .Where(cr => !assmblies.Contains(cr.Activator.LimitType.Assembly))
                     ;
                 foreach (var c in components)
                 {
@@ -103,7 +107,7 @@ namespace UIShell.IoCPlugin
             lock (containerBuilder)
             {
                 var container = containerBuilder.Build();
-                runtime.AddService(typeof(IContainer), container);
+                runtime.AddService(typeof (IContainer), container);
             }
         }
     }

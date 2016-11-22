@@ -4,7 +4,7 @@ namespace UIShell.Extension
 {
     public abstract class BuilderBase<T> : AbstractBuilder<T>
     {
-        public BuilderBase()
+        protected BuilderBase()
         {
             Items = new List<T>();
         }
@@ -19,9 +19,9 @@ namespace UIShell.Extension
 
         public override void Reset()
         {
-            for (int i = 0; i < Items.Count; i++)
+            for (var i = 0; i < Items.Count; i++)
             {
-                this.OnItemRemoved(Items[i]);
+                OnItemRemoved(Items[i]);
             }
             Items.Clear();
         }

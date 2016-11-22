@@ -1,17 +1,14 @@
-﻿using Boco.Rios.Portal.Management.Entity;
+﻿using System.Collections.Generic;
+using Boco.Rios.Portal.Management.Entity;
 using Boco.Rios.Portal.Management.Persistence.DaoService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Boco.Rios.Portal.Management.DomainModel
 {
     public class NoticeDomainModel
     {
         private static NoticeDomainModel instance;
-        private static object syncObj = new object();
-        private NoticeDaoService daoService = new NoticeDaoService();
+        private static readonly object syncObj = new object();
+        private readonly NoticeDaoService daoService = new NoticeDaoService();
 
         private NoticeDomainModel()
         {

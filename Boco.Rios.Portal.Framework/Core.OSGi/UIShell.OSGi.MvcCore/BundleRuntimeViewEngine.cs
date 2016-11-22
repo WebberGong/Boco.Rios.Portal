@@ -1,7 +1,5 @@
-using System.Linq;
 using System.Web.Mvc;
 using UIShell.OSGi.Collection;
-using UIShell.OSGi.Collection.Locker;
 
 namespace UIShell.OSGi.MvcCore
 {
@@ -12,15 +10,17 @@ namespace UIShell.OSGi.MvcCore
 
         public BundleRuntimeViewEngine(IBundleViewEngineFactory viewEngineFactory)
         {
-            this.BundleViewEngineFactory = viewEngineFactory;
+            BundleViewEngineFactory = viewEngineFactory;
             BundleRuntime.Instance.Framework.EventManager.AddBundleEventListener(BundleEventListener, true);
             BundleRuntime.Instance.Framework.EventManager.AddFrameworkEventListener(FrameworkEventListener);
 
             BundleRuntime.Instance.Framework.Bundles.ForEach(AddViewEngine);
         }
 
+        public IBundleViewEngineFactory BundleViewEngineFactory { get; private set; }
+
         public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName,
-                                                bool useCache)
+            bool useCache)
         {
             var viewEngine = GetViewEngine(controllerContext);
             if (viewEngine != null)
@@ -31,7 +31,7 @@ namespace UIShell.OSGi.MvcCore
         }
 
         public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName,
-                                         bool useCache)
+            bool useCache)
         {
             var viewEngine = GetViewEngine(controllerContext);
             if (viewEngine != null)
@@ -71,11 +71,9 @@ namespace UIShell.OSGi.MvcCore
             }
         }
 
-        public IBundleViewEngineFactory BundleViewEngineFactory { get; private set; }
-
         private void AddViewEngine(IBundle bundle)
         {
-            using (DictionaryLocker<string, IBundleViewEngine> locker = _viewEngines.Lock())
+            using (var locker = _viewEngines.Lock())
             {
                 locker[bundle.SymbolicName] = BundleViewEngineFactory.CreateViewEngine(bundle);
             }
@@ -91,9 +89,9 @@ namespace UIShell.OSGi.MvcCore
             object symbolicName = controllerContext.GetPluginSymbolicName();
             if (symbolicName != null)
             {
-                using (DictionaryLocker<string, IBundleViewEngine> locker = _viewEngines.Lock())
+                using (var locker = _viewEngines.Lock())
                 {
-                    string key = symbolicName.ToString();
+                    var key = symbolicName.ToString();
                     if (locker.ContainsKey(key))
                     {
                         return locker[key];
